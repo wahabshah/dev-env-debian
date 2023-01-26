@@ -31,8 +31,8 @@ RUN install-packages \
     && locale-gen en_US.UTF-8
 
 ENV LANG=en_US.UTF-8
+ENV LC_CTYPE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
-ENV LANGUAGE=en_US.UTF-8
 
 ### Update and upgrade the base image ###
 #RUN upgrade-packages
@@ -90,14 +90,14 @@ ENV TRIGGER_REBUILD=1
 
 # https://docs.docker.com/engine/install/debian/
 # Install Docker Engine
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends ca-certificates curl  gnupg  lsb-release \
-    && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
-    && echo \
-       "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
-    && sudo apt-get update \
-    && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends ca-certificates curl  gnupg  lsb-release \
+#     && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
+#     && echo \
+#        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+#        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
+#     && sudo apt-get update \
+#     && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 RUN curl -o /usr/bin/slirp4netns -fsSL https://github.com/rootless-containers/slirp4netns/releases/download/v1.1.12/slirp4netns-$(uname -m) \
     && chmod +x /usr/bin/slirp4netns
@@ -133,5 +133,64 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/"$(lsb_release -cs)".gpg
 
 USER gitpod
 
+#########TOOL-CHROME#####################
 
-######################
+USER root
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+
+# chrome and basic render font
+# google-chrome
+# misc deps for electron and puppeteer to run
+RUN cd /tmp && glink="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" \
+	&& wget -q "$glink" \
+	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
+	fonts-noto fonts-noto-cjk ./"${glink##*/}" \
+	\
+	# OLD: && ln -srf /usr/bin/chromium /usr/bin/google-chrome
+	# OLD: To make ungoogled_chromium discoverable by tools like flutter
+	&& ln -srf /usr/bin/google-chrome /usr/bin/chromium \
+	\
+	# Extra chrome tweaks
+	## Disables welcome screen
+	&& t="$HOME/.config/google-chrome/First Run" && sudo -u gitpod mkdir -p "${t%/*}" && sudo -u gitpod touch "$t" \
+	## Disables default browser prompt
+	&& t="/etc/opt/chrome/policies/managed/managed_policies.json" && mkdir -p "${t%/*}" && printf '{ "%s": %s }\n' DefaultBrowserSettingEnabled false > "$t"
+
+# For Qt WebEngine on docker
+ENV QTWEBENGINE_DISABLE_SANDBOX 1
+
+USER gitpod
+
+########TOOL-VNC#########################
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+
+USER root
+
+# Install Desktop-ENV, tools
+RUN install-packages \
+	tigervnc-standalone-server tigervnc-xorg-extension \
+	dbus dbus-x11 gnome-keyring xfce4 xfce4-terminal \
+	xdg-utils x11-xserver-utils pip
+
+# Install novnc and numpy module for it
+RUN git clone --depth 1 https://github.com/novnc/noVNC.git /opt/novnc \
+	&& git clone --depth 1 https://github.com/novnc/websockify /opt/novnc/utils/websockify \
+	&& find /opt/novnc -type d -name '.git' -exec rm -rf '{}' + \
+	&& sudo -H pip3 install numpy
+COPY novnc-index.html /opt/novnc/index.html
+
+# Add VNC startup script
+COPY gp-vncsession /usr/bin/
+RUN chmod 0755 "$(which gp-vncsession)" \
+	&& printf '%s\n' 'export DISPLAY=:0' \
+	'test -e "$GITPOD_REPO_ROOT" && gp-vncsession' >> "$HOME/.bashrc"
+# Add X11 dotfiles
+COPY --chown=gitpod:gitpod .xinitrc $HOME/
+
+USER gitpod
+
+#################
