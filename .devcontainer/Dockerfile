@@ -124,7 +124,7 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/"$(lsb_release -cs)".gpg
     && curl -fsSL https://pkgs.tailscale.com/stable/debian/"$(lsb_release -cs)".list | sudo tee /etc/apt/sources.list.d/tailscale.list \
     && apt-get update \
     && apt-get install -y tailscale \
-    && rm /etc/apt/sources.list.d/tailscale.list
+    && rm /etc/apt/sources.list.d/tailscale.list \
     && update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 
 
