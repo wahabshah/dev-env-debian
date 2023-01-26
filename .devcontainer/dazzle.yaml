@@ -1,0 +1,170 @@
+combiner:
+  combinations:
+    - name: base
+      chunks:
+        - dep-cacert-update
+        - tool-docker
+        - tool-tailscale
+    - name: c
+      ref:
+      - base
+      chunks:
+        - lang-c
+    - name: clojure
+      ref:
+      - base
+      chunks:
+        - lang-clojure
+    - name: elixir
+      ref:
+      - base
+      chunks:
+        - lang-elixir
+    - name: full
+      ref:
+      - base
+      chunks:
+        - lang-c
+        - lang-clojure
+        - lang-go:1.19.5
+        - lang-java:11
+        - lang-node:16
+        - lang-python:3.8
+        - lang-ruby:3.1
+        - lang-rust
+        - tool-brew
+        - tool-nginx
+        - tool-nix:2.11.0
+    - name: full-vnc
+      ref:
+      - full
+      chunks:
+        - tool-chrome
+        - tool-vnc
+    - name: go
+      ref:
+      - base
+      chunks:
+        - lang-go:1.19.5
+    - name: nix
+      ref:
+      - base
+      chunks:
+        - tool-nix:2.11.0
+    - name: node
+      ref:
+      - base
+      chunks:
+        - lang-node:18
+        - tool-chrome
+    - name: node-lts
+      ref:
+      - base
+      chunks:
+        - lang-node:16
+        - tool-chrome
+    - name: python
+      ref:
+      - base
+      chunks:
+        - lang-python:3.8
+    - name: python-3.7
+      ref:
+      - base
+      chunks:
+        - lang-python:3.7
+    - name: python-3.8
+      ref:
+      - base
+      chunks:
+        - lang-python:3.8
+    - name: python-3.9
+      ref:
+      - base
+      chunks:
+        - lang-python:3.9
+    - name: python-3.10
+      ref:
+      - base
+      chunks:
+        - lang-python:3.10
+    - name: python-3.11
+      ref:
+      - base
+      chunks:
+        - lang-python:3.11
+    - name: ruby-2
+      ref:
+      - base
+      chunks:
+        - lang-ruby:2.7
+    - name: ruby-3.0
+      ref:
+      - base
+      chunks:
+        - lang-ruby:3.0
+    - name: ruby-3.1
+      ref:
+      - base
+      chunks:
+        - lang-ruby:3.1
+    - name: ruby-3.2
+      ref:
+      - base
+      chunks:
+        - lang-ruby:3.2
+    - name: ruby-3
+      ref:
+      - base
+      chunks:
+        - lang-ruby:3.2
+    - name: rust
+      ref:
+      - base
+      chunks:
+        - lang-rust
+    - name: dotnet
+      ref:
+      - full
+      chunks:
+        - tool-dotnet
+    - name: postgres
+      ref:
+      - full
+      chunks:
+        - tool-postgresql
+    - name: mysql
+      ref:
+      - full
+      chunks:
+        - tool-mysql
+    - name: mongodb
+      ref:
+      - full
+      chunks:
+        - tool-mongodb
+    - name: java-11
+      ref:
+      - base
+      chunks:
+        - lang-java:11
+    - name: java-17
+      ref:
+      - base
+      chunks:
+        - lang-java:17
+    - name: yugabytedb
+      ref:
+      - full
+      chunks:
+        - tool-yugabytedb:2.14
+    - name: yugabytedb-preview
+      ref:
+      - full
+      chunks:
+        - tool-yugabytedb:2.15
+  envvars:
+    - name: PATH
+      action: merge-unique
+    - name: HOME
+      action: use-last
