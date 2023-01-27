@@ -141,5 +141,79 @@ gitpod       459  0.0  0.0  24864 19212 ?        S    06:24   0:00 /home/gitpod/
 gitpod       515  0.0  0.0  26372 16352 ?        S    06:24   0:00 /home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
 gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
 ```
+Effective processes which need to run for desktop:-
+1. Start dbus
+```sh
+/usr/bin/dbus-daemon --system
+```
+2. Perl script for vncserver
+* launching Xtigervnc /usr/bin/vncserver -> /etc/alternatives/vncserver -> /usr/bin/tigervncserver
+* Xvnc-session (VNC startup script) after launching Xtigervnc (exec /etc/X11/Xsession)
+  * /etc/X11/Xsession
+    * writes to $HOME/.xsession-errors
+    * loops in folder /etc/X11/Xsession.d
+
+        ```sh
+        $ tree /etc/X11/
+        /etc/X11/
+        ├── app-defaults
+        │   └── Xvidtune
+        ├── rgb.txt
+        ├── xkb
+        ├── Xreset
+        ├── Xreset.d
+        │   └── README
+        ├── Xresources
+        │   └── x11-common
+        ├── Xsession
+        ├── Xsession.d
+        │   ├── 20dbus_xdg-runtime
+        │   ├── 20x11-common_process-args
+        │   ├── 30x11-common_xresources
+        │   ├── 35x11-common_xhost-local
+        │   ├── 40x11-common_xsessionrc
+        │   ├── 50x11-common_determine-startup
+        │   ├── 55xfce4-session
+        │   ├── 60x11-common_localhost
+        │   ├── 60x11-common_xdg_path
+        │   ├── 75dbus_dbus-launch
+        │   ├── 90gpg-agent
+        │   ├── 90x11-common_ssh-agent
+        │   ├── 95dbus_update-activation-env
+        │   └── 99x11-common_start
+        ├── Xsession.options
+        └── Xvnc-session
+        ```
+    * /usr/bin/startxfce4
+```sh
+/usr/bin/perl /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
+/usr/bin/Xtigervnc :0 -desktop 34c11d13cda8:0 (gitpod) -auth /home/gitpod/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 30000 -rfbport 5900 -pn -localhost -SecurityTypes None
+/bin/sh /etc/X11/Xvnc-session
+xfce4-session
+dbus-launch --autolaunch b5c7bb5fdfc044cea61ccc86a6fb88ea --binary-syntax --close-stderr
+/usr/bin/dbus-daemon --syslog-only --fork --print-pid 5 --print-address 7 --session
+/usr/bin/dbus-launch --exit-with-session --sh-syntax
+/usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 8 --session
+/usr/bin/ssh-agent x-session-manager
+/usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd
+/usr/lib/policykit-1/polkitd --no-debug
+/usr/bin/gpg-agent --sh --daemon --write-env-file /home/gitpod/.cache/gpg-agent-info
+xfwm4
+xfsettingsd
+xfce4-panel
+Thunar --daemon
+xfdesktop
+/usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libsystray.so 6 16777224 systray Notification Area Area where notification icons appear
+/usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libpulseaudio-plugin.so 8 16777225 pulseaudio PulseAudio Plugin Adjust the audio volume of the Pulse
+/usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libactions.so 14 16777226 actions Action Buttons Log out, lock or other system actions
+```
+3. NoVNC 
+```
+/bin/bash /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
+/home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
+/home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
+```
 
 ![image](https://user-images.githubusercontent.com/8818025/215065804-4978ea06-37fe-4457-b2e1-aacb8352958c.png)
+
+
