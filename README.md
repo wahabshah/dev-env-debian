@@ -185,6 +185,12 @@ Effective processes which need to run for desktop:-
         └── Xvnc-session
         ```
     * /usr/bin/x-session-manager -> /etc/alternatives/x-session-manager -> /usr/bin/startxfce4
+    * xfce4-session https://github.com/xfce-mirror/xfce4-session/blob/xfce-4.16/settings/xfce4-session.xml
+      * xfwm4
+      * xfsettingsd
+      * xfce4-panel
+      * Thunar --daemon
+      * xfdesktop
 ```sh
 /usr/bin/perl /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
 /usr/bin/Xtigervnc :0 -desktop 34c11d13cda8:0 (gitpod) -auth /home/gitpod/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 30000 -rfbport 5900 -pn -localhost -SecurityTypes None
