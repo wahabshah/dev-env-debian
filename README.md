@@ -24,6 +24,7 @@ root      1094  4.4  0.0   2572   912 ?        Ss   05:22   0:00 /bin/sh
 gitpod    1218  0.0  0.0  11064  4488 pts/0    R+   05:22   0:00 ps -aux
 ```
 ```sh
+gitpod /workspaces/dev-env-debian (main) $ ls -alh /tmp
 drwxr-xrwt+ 4 root   root   4.0K Jan 27 10:20 .
 drwxr-xr-x  1 root   root   4.0K Jan 27 06:55 ..
 drwxr-xrw-+ 2 gitpod gitpod 4.0K Jan 27 10:20 codespaces_logs
@@ -141,3 +142,4 @@ gitpod       515  0.0  0.0  26372 16352 ?        S    06:24   0:00 /home/gitpod/
 gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
 ```
 
+![image](https://user-images.githubusercontent.com/8818025/215065804-4978ea06-37fe-4457-b2e1-aacb8352958c.png)
