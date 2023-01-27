@@ -69,3 +69,34 @@ gitpod   14897  0.0  0.0   8252  5068 pts/1    Ss   05:53   0:00 /usr/bin/bash -
 gitpod   14970  0.0  0.0   2480   944 ?        S    05:53   0:00 sleep 1
 gitpod   14974  0.0  0.0  11196  4444 pts/1    R+   05:53   0:00 ps -aux
 ```
+
+# Working
+```sh
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+gitpod         1  0.0  0.0  12372  9416 pts/0    Ss   06:24   0:00 /bin/bash
+message+     231  0.0  0.0   7032  3280 ?        Ss   06:24   0:00 /usr/bin/dbus-daemon --system
+gitpod       247  0.2  0.1 212916 110892 ?       S    06:24   0:00 /usr/bin/Xtigervnc :0 -desktop 34c11d13cda8:0 (gitpod) -auth /home/gitpod/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 3
+gitpod       252  0.0  0.0  17476  8508 ?        S    06:24   0:00 /usr/bin/perl /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
+gitpod       253  0.0  0.0   2616   536 ?        S    06:24   0:00 /bin/sh /etc/X11/Xvnc-session
+gitpod       255  0.0  0.0 391568 59796 ?        Sl   06:24   0:00 xfce4-session
+gitpod       330  0.0  0.0   7172  1984 ?        S    06:24   0:00 dbus-launch --autolaunch b5c7bb5fdfc044cea61ccc86a6fb88ea --binary-syntax --close-stderr
+gitpod       331  0.0  0.0   6904  2560 ?        Ss   06:24   0:00 /usr/bin/dbus-daemon --syslog-only --fork --print-pid 5 --print-address 7 --session
+gitpod       350  0.0  0.0   7172  1916 ?        S    06:24   0:00 /usr/bin/dbus-launch --exit-with-session --sh-syntax
+gitpod       351  0.0  0.0   7120  3100 ?        Ss   06:24   0:00 /usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 8 --session
+gitpod       358  0.0  0.0   6044   456 ?        Ss   06:24   0:00 /usr/bin/ssh-agent x-session-manager
+gitpod       373  0.0  0.0 230240  5800 ?        Sl   06:24   0:00 /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd
+root         379  0.0  0.0 236856  9616 ?        Sl   06:24   0:00 /usr/lib/policykit-1/polkitd --no-debug
+gitpod       386  0.0  0.0   7476   280 ?        Ss   06:24   0:00 /usr/bin/gpg-agent --sh --daemon --write-env-file /home/gitpod/.cache/gpg-agent-info
+gitpod       387  0.1  0.0 236692 38196 ?        Sl   06:24   0:00 xfwm4
+gitpod       397  0.0  0.0 224512 21080 ?        Ssl  06:24   0:00 xfsettingsd
+gitpod       398  0.0  0.0 312932 41280 ?        Sl   06:24   0:00 xfce4-panel
+gitpod       404  0.0  0.0 340908 24304 ?        Sl   06:24   0:00 Thunar --daemon
+gitpod       415  0.1  0.0 321964 49136 ?        Sl   06:24   0:00 xfdesktop
+gitpod       419  0.0  0.0 192224 23672 ?        Sl   06:24   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libsystray.so 6 16777224 systr
+gitpod       421  0.0  0.0 307492 36440 ?        Sl   06:24   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libpulseaudio-plugin.so 8 1677
+gitpod       424  0.0  0.0   7112  3464 ?        S    06:24   0:00 /bin/bash /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
+gitpod       429  0.0  0.0 194316 26532 ?        Sl   06:24   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libactions.so 14 16777226 acti
+gitpod       459  0.0  0.0  24864 19212 ?        S    06:24   0:00 /home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
+gitpod       515  0.0  0.0  26372 16352 ?        S    06:24   0:00 /home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
+gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
+```
