@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+desktop-init.sh
+
 function start_service() {
 	local executable="$1" && shift
 	local executable_name="${executable##*/}"

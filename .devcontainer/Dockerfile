@@ -28,11 +28,10 @@ RUN install-packages \
         ssl-cert \
         fish \
         zsh \
-    && locale-gen en_US.UTF-8
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen
 
-ENV LANG=en_US.UTF-8
-ENV LC_CTYPE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
+#ENV LANG=en_US.UTF-8
 
 ### Update and upgrade the base image ###
 #RUN upgrade-packages
@@ -190,6 +189,9 @@ RUN chmod 0755 "$(which gp-vncsession)" \
 	'test -e "$GITPOD_REPO_ROOT" && gp-vncsession' >> "$HOME/.bashrc"
 # Add X11 dotfiles
 COPY --chown=gitpod:gitpod .xinitrc $HOME/
+
+COPY desktop-init.sh /usr/bin/
+RUN chmod 0755 "$(which desktop-init.sh)"
 
 USER gitpod
 
