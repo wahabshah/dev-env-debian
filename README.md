@@ -217,3 +217,4 @@ xfdesktop
 ![image](https://user-images.githubusercontent.com/8818025/215065804-4978ea06-37fe-4457-b2e1-aacb8352958c.png)
 
 
+sudo rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus*
