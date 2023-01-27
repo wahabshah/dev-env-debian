@@ -37,14 +37,14 @@ if test ! -e /tmp/.X0-lock; then {
 	log::info "$(sudo service dbus start | xargs)"
 
 	## Custom session for tigervnc
-	# sudo mkdir -p -m0755 /etc/X11/tigervnc /usr/share/xsessions;
-	# sudo ln -srf "$HOME/.xinitrc" /etc/X11/tigervnc/Xsession;
-	# printf '%s\n' '[Desktop Entry]' 'Name=Xsession' \
-	#                 'Exec=/etc/X11/tigervnc/Xsession'| sudo tee /usr/share/xsessions/xfce4.desktop;
+	sudo mkdir -p -m0755 /etc/X11/tigervnc /usr/share/xsessions;
+	sudo ln -srf "$HOME/.xinitrc" /etc/X11/tigervnc/Xsession;
+	printf '%s\n' '[Desktop Entry]' 'Name=Xsession' \
+	                'Exec=/etc/X11/tigervnc/Xsession'| sudo tee /usr/share/xsessions/xfce4.desktop;
 
 	## Custom config for tigervnc
-	# mkdir -p -m0755 $HOME/.vnc;
-	# printf '%s\n' 'session=xfce4' "geometry=${TIGERVNC_GEOMETRY:-1920x1080}" > $HOME/.vnc/config
+	mkdir -p -m0755 $HOME/.vnc;
+	printf '%s\n' 'session=xfce4' "geometry=${TIGERVNC_GEOMETRY:-1920x1080}" > $HOME/.vnc/config
 
 	## Create .xinit
 	# log::info 'Creating .xinit script'

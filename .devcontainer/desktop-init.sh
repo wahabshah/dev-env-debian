@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Check at least one locale exists
-if ! grep -o -E '^\s*en_US.UTF-8\s+UTF-8' /etc/locale.gen > /dev/null; then
-    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-    locale-gen
-fi
-
 user_name="$(id -u -n)"
 group_name="$(id -g -n)"
 LOG=/tmp/container-init.log
