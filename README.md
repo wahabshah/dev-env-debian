@@ -222,4 +222,8 @@ xfdesktop
 
 ![image](https://user-images.githubusercontent.com/8818025/215065804-4978ea06-37fe-4457-b2e1-aacb8352958c.png)
 
+### Qt6 Installation 
 
+```sh
+sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtquick-controls qml6-module-qtquick-window
+```
