@@ -23,14 +23,33 @@ gitpod    1027  1.7  0.0   2572  1708 ?        Ss   05:22   0:00 /bin/sh
 root      1094  4.4  0.0   2572   912 ?        Ss   05:22   0:00 /bin/sh
 gitpod    1218  0.0  0.0  11064  4488 pts/0    R+   05:22   0:00 ps -aux
 ```
+```sh
+drwxr-xrwt+ 4 root   root   4.0K Jan 27 10:20 .
+drwxr-xr-x  1 root   root   4.0K Jan 27 06:55 ..
+drwxr-xrw-+ 2 gitpod gitpod 4.0K Jan 27 10:20 codespaces_logs
+drwxrwxrwx+ 3 root   root   4.0K Jan 27 08:29 editors
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-git-ca140a59dc.sock
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-ipc-06059ad5-6342-4000-bdf3-c1af5d0bb074.sock
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-ipc-92bc44c0-a95a-4e9e-9b57-53f7b95e8b18.sock
+```
 
 ## After Starting Desktop
+```sh
+$ gp-vncsession 
+mount: /dev/shm: permission denied.
+info[gp-vncsession]: Failed to increase shmem
+info[gp-vncsession]: * Starting system message bus dbus ...done.
+info[gp-vncsession]: Starting tigerVNC server on port 5900
+info[gp-vncsession]: Waiting for the desktop to be fully loaded ...
+info[gp-vncsession]: Starting noVNC web client on port 6080
+```
+which effectively runs :-
 ```sh
 /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
 /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
 ```
 
-
+### Not working
 ```sh
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 gitpod       1  0.0  0.0   2572  1740 ?        Ss   05:22   0:00 /bin/sh -c echo Container started trap "exit 0" 15  exec "$@" while sleep 1 & wait $!; do :; done -
@@ -69,8 +88,29 @@ gitpod   14897  0.0  0.0   8252  5068 pts/1    Ss   05:53   0:00 /usr/bin/bash -
 gitpod   14970  0.0  0.0   2480   944 ?        S    05:53   0:00 sleep 1
 gitpod   14974  0.0  0.0  11196  4444 pts/1    R+   05:53   0:00 ps -aux
 ```
+```sh
+gitpod /workspaces/dev-env-debian (main) $ ls -alh /tmp
+total 56K
+drwxr-xrwt+ 8 root   root   4.0K Jan 27 10:22 .
+drwxr-xr-x  1 root   root   4.0K Jan 27 06:55 ..
+-rw-r--rw-  1 gitpod gitpod  617 Jan 27 10:22 bash.log
+-rw-r--rw-  1 gitpod gitpod    5 Jan 27 10:22 bash.pid
+drwxr-xrw-+ 2 gitpod gitpod 4.0K Jan 27 10:20 codespaces_logs
+drwxrwxrwx+ 3 root   root   4.0K Jan 27 08:29 editors
+drwxrwxrwt+ 2 gitpod gitpod 4.0K Jan 27 10:22 .ICE-unix
+drwx------+ 2 gitpod gitpod 4.0K Jan 27 10:22 pulse-PKdhtXMmr18n
+drwx------+ 2 gitpod gitpod 4.0K Jan 27 10:22 ssh-y8TpOHVXFjR7
+-rw-r--rw-  1 gitpod gitpod  476 Jan 27 10:22 vncserver.log
+-rw-r--rw-  1 gitpod gitpod    5 Jan 27 10:22 vncserver.pid
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-git-ca140a59dc.sock
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-ipc-06059ad5-6342-4000-bdf3-c1af5d0bb074.sock
+srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-ipc-92bc44c0-a95a-4e9e-9b57-53f7b95e8b18.sock
+-r--r--r--  1 gitpod gitpod   11 Jan 27 10:22 .X0-lock
+drwxrwxrwt+ 2 gitpod gitpod 4.0K Jan 27 10:22 .X11-unix
+-rw-------  1 gitpod gitpod  450 Jan 27 10:22 .xfsm-ICE-5MNHZ1
+```
 
-# Working
+## Working
 ```sh
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 gitpod         1  0.0  0.0  12372  9416 pts/0    Ss   06:24   0:00 /bin/bash
@@ -100,3 +140,4 @@ gitpod       459  0.0  0.0  24864 19212 ?        S    06:24   0:00 /home/gitpod/
 gitpod       515  0.0  0.0  26372 16352 ?        S    06:24   0:00 /home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
 gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
 ```
+
