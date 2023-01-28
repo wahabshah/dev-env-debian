@@ -199,6 +199,7 @@ USER root
 RUN install-packages \
 	build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
     cmake qml6-module-qtquick-controls qml6-module-qtquick-window \
-    pkg-config liburing-dev gdb -t experimental libboost-dev
+    pkg-config liburing-dev gdb
+RUN install-packages -t experimental libboost-dev
 
 USER gitpod
