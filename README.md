@@ -1,5 +1,6 @@
 # dev-env-debian
 
+https://github.com/codespaces/new?hide_repo_select=true&ref=debian&repo=593618509&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope
 
 ## Before Starting Desktop
 ```sh
@@ -226,4 +227,8 @@ xfdesktop
 
 ```sh
 sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtquick-controls qml6-module-qtquick-window
+```
+
+```sh
+sudo rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus*
 ```

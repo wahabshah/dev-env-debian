@@ -1,7 +1,7 @@
 {
 	"name": "Debian",
 	"build": {
-		"dockerfile": ".Dockerfile",
+		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Debian version: sid, bullseye, buster, stretch 
 		"args": { 
 					"VARIANT"  : "bookworm"
