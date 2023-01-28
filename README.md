@@ -149,7 +149,7 @@ Effective processes which need to run for desktop:-
 ```
 2. Perl script for vncserver
 * launching Xtigervnc /usr/bin/vncserver -> /etc/alternatives/vncserver -> /usr/bin/tigervncserver
-* Xvnc-session (VNC startup script) after launching Xtigervnc (exec /etc/X11/Xsession)
+* Xvnc-session (VNC startup script) after launching Xtigervnc (exec [/etc/X11/Xsession](https://manpages.ubuntu.com/manpages/bionic/man5/Xsession.5.html))
   * /etc/X11/Xsession
     * writes to $HOME/.xsession-errors
     * loops in folder /etc/X11/Xsession.d
@@ -186,6 +186,12 @@ Effective processes which need to run for desktop:-
         └── Xvnc-session
         ```
     * /usr/bin/x-session-manager -> /etc/alternatives/x-session-manager -> /usr/bin/startxfce4
+    * xfce4-session https://github.com/xfce-mirror/xfce4-session/blob/xfce-4.16/settings/xfce4-session.xml
+      * xfwm4
+      * xfsettingsd
+      * xfce4-panel
+      * Thunar --daemon
+      * xfdesktop
 ```sh
 /usr/bin/perl /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
 /usr/bin/Xtigervnc :0 -desktop 34c11d13cda8:0 (gitpod) -auth /home/gitpod/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 30000 -rfbport 5900 -pn -localhost -SecurityTypes None
@@ -217,5 +223,12 @@ xfdesktop
 
 ![image](https://user-images.githubusercontent.com/8818025/215065804-4978ea06-37fe-4457-b2e1-aacb8352958c.png)
 
+### Qt6 Installation 
 
+```sh
+sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtquick-controls qml6-module-qtquick-window
+```
+
+```sh
 sudo rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus*
+```

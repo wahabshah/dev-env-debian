@@ -1,0 +1,4 @@
+workspaceLocation: "."
+image:
+  file: .devcontainer/Dockerfile
+  context: .devcontainer
