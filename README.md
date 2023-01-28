@@ -6,6 +6,8 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593618509&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope)
 
+![image](https://user-images.githubusercontent.com/8818025/215270218-99300128-2b6a-4ac9-99bb-d3d9c8848fa5.png)
+
 ## Before Starting Desktop
 ```sh
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -40,6 +42,7 @@ srwxr-xr--  1 gitpod gitpod    0 Jan 27 10:20 vscode-ipc-92bc44c0-a95a-4e9e-9b57
 ```
 
 ## After Starting Desktop
+
 ```sh
 $ gp-vncsession 
 mount: /dev/shm: permission denied.
@@ -49,51 +52,7 @@ info[gp-vncsession]: Starting tigerVNC server on port 5900
 info[gp-vncsession]: Waiting for the desktop to be fully loaded ...
 info[gp-vncsession]: Starting noVNC web client on port 6080
 ```
-which effectively runs :-
-```sh
-/usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
-/opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
-```
 
-### Not working
-```sh
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-gitpod       1  0.0  0.0   2572  1740 ?        Ss   05:22   0:00 /bin/sh -c echo Container started trap "exit 0" 15  exec "$@" while sleep 1 & wait $!; do :; done -
-gitpod     419  0.0  0.0   2572  1692 ?        Ss   05:22   0:00 /bin/sh
-root       519  0.0  0.0   2572   924 ?        Ss   05:22   0:00 /bin/sh
-gitpod     618  0.0  0.0   2572   880 ?        Ss   05:22   0:00 sh /home/gitpod/.vscode-remote/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/server.sh --log trace --force-disable-user-env --server-data
-gitpod     625  0.7  1.4 979876 118140 ?       Sl   05:22   0:13 /home/gitpod/.vscode-remote/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node /home/gitpod/.vscode-remote/bin/97dec172d3256f8ca4bfb2143f
-gitpod     646  0.2  0.7 715752 59428 ?        Sl   05:22   0:05 /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/out/b
-gitpod     775  3.4  3.2 11606092 261032 ?     Sl   05:22   1:03 /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/out/b
-gitpod     786  0.0  0.5 835016 41068 ?        Sl   05:22   0:00 /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/out/b
-gitpod     800  0.0  0.0   2572  1784 ?        Ss   05:22   0:00 /bin/sh
-root       870  0.0  0.0   2572   944 ?        Ss   05:22   0:00 /bin/sh
-gitpod    1027  0.0  0.0   2572  1708 ?        Ss   05:22   0:00 /bin/sh
-root      1094  0.0  0.0   2572   912 ?        Ss   05:22   0:00 /bin/sh
-gitpod    1325  0.0  0.5 589508 44180 ?        Sl   05:23   0:00 /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/exten
-message+  2859  0.0  0.0   7892  2728 ?        Ss   05:25   0:00 /usr/bin/dbus-daemon --system
-gitpod    9484  0.0  0.0   8384  5456 pts/0    Ss   05:41   0:00 /usr/bin/bash --init-file /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/out/vs/workbench/contrib/terminal/browser/media
-gitpod   13608  0.0  0.1  19148 12308 ?        Ss   05:50   0:00 /usr/bin/perl /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
-gitpod   13609  0.0  1.0 250368 86204 ?        Ss   05:50   0:00 /usr/bin/Xtigervnc :0 -localhost=1 -desktop codespaces-fb0a2d:0 (gitpod) -rfbport 5900 -SecurityTypes None -auth /home/gitpod/.Xauthorit
-gitpod   13612  0.0  0.0   2572   884 ?        Ss   05:50   0:00 /bin/sh /etc/X11/Xtigervnc-session /etc/X11/tigervnc/Xsession
-gitpod   13617  0.0  0.0   9728  4488 ?        S    05:50   0:00 tigervncconfig -iconic
-gitpod   13618  0.0  0.9 470800 73612 ?        Sl   05:50   0:00 xfce4-session
-gitpod   13746  0.0  0.0  10084  2004 ?        S    05:50   0:00 dbus-launch --autolaunch 85e2cf392fe2cb6006ba40f663d35ec2 --binary-syntax --close-stderr
-gitpod   13747  0.0  0.0   7756   372 ?        Ss   05:50   0:00 /usr/bin/dbus-daemon --syslog-only --fork --print-pid 5 --print-address 7 --session
-gitpod   13770  0.0  0.0  10084  2040 ?        S    05:50   0:00 /usr/bin/dbus-launch --exit-with-session --sh-syntax
-gitpod   13771  0.0  0.0   7756  2320 ?        Ss   05:50   0:00 /usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 7 --session
-gitpod   13783  0.0  0.0   7636   776 ?        Ss   05:50   0:00 /usr/bin/ssh-agent /etc/X11/tigervnc/Xsession
-gitpod   13786  0.0  0.0  10084  2004 ?        S    05:50   0:00 dbus-launch --exit-with-session xfce4-session
-gitpod   13787  0.0  0.0   7844  2548 ?        Ss   05:50   0:00 /usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 7 --session
-gitpod   13791  0.0  0.0 233132  6384 ?        Sl   05:50   0:00 /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd
-polkitd  13797  0.0  0.0 234364  7796 ?        Sl   05:50   0:00 /usr/lib/polkit-1/polkitd --no-debug
-gitpod   14469  0.0  0.0   7056  3404 pts/0    S+   05:52   0:00 bash /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
-gitpod   14477  1.3  0.4 207860 37160 pts/0    S+   05:52   0:00 python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
-gitpod   14676  0.0  0.3 207860 27148 pts/0    S+   05:52   0:00 python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
-gitpod   14897  0.0  0.0   8252  5068 pts/1    Ss   05:53   0:00 /usr/bin/bash --init-file /vscode/bin/linux-x64/97dec172d3256f8ca4bfb2143f3f76b503ca0534/out/vs/workbench/contrib/terminal/browser/media
-gitpod   14970  0.0  0.0   2480   944 ?        S    05:53   0:00 sleep 1
-gitpod   14974  0.0  0.0  11196  4444 pts/1    R+   05:53   0:00 ps -aux
-```
 ```sh
 gitpod /workspaces/dev-env-debian (main) $ ls -alh /tmp
 total 56K
@@ -116,7 +75,6 @@ drwxrwxrwt+ 2 gitpod gitpod 4.0K Jan 27 10:22 .X11-unix
 -rw-------  1 gitpod gitpod  450 Jan 27 10:22 .xfsm-ICE-5MNHZ1
 ```
 
-## Working
 ```sh
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 gitpod         1  0.0  0.0  12372  9416 pts/0    Ss   06:24   0:00 /bin/bash
@@ -146,6 +104,13 @@ gitpod       459  0.0  0.0  24864 19212 ?        S    06:24   0:00 /home/gitpod/
 gitpod       515  0.0  0.0  26372 16352 ?        S    06:24   0:00 /home/gitpod/.pyenv/versions/3.8.16/bin/python3 -m websockify --web /opt/novnc/utils/../ 6080 localhost:5900
 gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
 ```
+
+`gp-vncsession` effectively runs :-
+```sh
+/usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
+/opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
+```
+
 Effective processes which need to run for desktop:-
 1. Start dbus
 ```sh
