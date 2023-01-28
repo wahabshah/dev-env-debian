@@ -190,9 +190,6 @@ RUN chmod 0755 "$(which gp-vncsession)" \
 # Add X11 dotfiles
 COPY --chown=gitpod:gitpod .xinitrc $HOME/
 
-COPY desktop-init.sh /usr/bin/
-RUN chmod 0755 "$(which desktop-init.sh)"
-
 USER gitpod
 
 #######Qt6-Boost1.81##########
@@ -202,6 +199,6 @@ USER root
 RUN install-packages \
 	build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
     cmake qml6-module-qtquick-controls qml6-module-qtquick-window \
-    pkg-config liburing-dev gdb libboost-dev -t experimental
+    pkg-config liburing-dev gdb -t experimental libboost-dev
 
 USER gitpod
