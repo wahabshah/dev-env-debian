@@ -1,6 +1,10 @@
 # dev-env-debian
 
-https://github.com/codespaces/new?hide_repo_select=true&ref=debian&repo=593618509&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope
+
+
+<a href="https://gitpod.io/#https://github.com/wahabshah/dev-env-debian" rel="nofollow noopener noreferrer" target="_blank" class="after:hidden"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod"></a>
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593618509&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope)
 
 ## Before Starting Desktop
 ```sh
