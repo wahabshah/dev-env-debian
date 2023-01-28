@@ -1,5 +1,6 @@
 # dev-env-debian
 
+https://github.com/codespaces/new?hide_repo_select=true&ref=debian&repo=593618509&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope
 
 ## Before Starting Desktop
 ```sh
