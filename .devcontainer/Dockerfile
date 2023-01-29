@@ -186,9 +186,9 @@ COPY novnc-index.html /opt/novnc/index.html
 COPY gp-vncsession /usr/bin/
 RUN chmod 0755 "$(which gp-vncsession)" \
 	&& printf '%s\n' 'export DISPLAY=:0' \
-	'test -e "$GITPOD_REPO_ROOT" && gp-vncsession' >> "$HOME/.bashrc"
+	'gp-vncsession' >> "$HOME/.bashrc"
 # Add X11 dotfiles
-COPY --chown=gitpod:gitpod .xinitrc $HOME/
+#COPY --chown=gitpod:gitpod .xinitrc $HOME/
 
 USER gitpod
 
@@ -200,6 +200,8 @@ RUN install-packages \
 	build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
     cmake qml6-module-qtquick-controls qml6-module-qtquick-window \
     pkg-config liburing-dev gdb
-#RUN install-packages -t experimental libboost-dev
+RUN echo "deb https://deb.debian.org/debian experimental main" > /etc/apt/sources.list.d/debian-experimental.list \
+    && install-packages -t experimental libboost-dev
+
 
 USER gitpod
