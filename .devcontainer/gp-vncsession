@@ -47,7 +47,7 @@ if test ! -e /tmp/.X0-lock; then {
 	## Create .xinit
 	# log::info 'Creating .xinit script'
 	# printf '%s\n' '#!/bin/sh' 'exec dbus-launch --exit-with-session xfce4-session;' > $HOME/.xinitrc;
-	chmod 755 "$HOME/.xinitrc"
+	# chmod 755 "$HOME/.xinitrc"
 
 	# Start vncserver
 	log::info "Starting tigerVNC server on port $VNC_PORT"
