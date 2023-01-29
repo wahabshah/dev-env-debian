@@ -107,6 +107,7 @@ gitpod       526  0.0  0.0   8896  3364 pts/0    R+   06:29   0:00 ps -aux
 
 `gp-vncsession` effectively runs :-
 ```sh
+sudo service dbus start | xargs
 /usr/bin/vncserver -geometry 1920x1080 -SecurityTypes None :0
 /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 6080
 ```
