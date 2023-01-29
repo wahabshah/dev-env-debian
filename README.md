@@ -199,5 +199,7 @@ sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-
 ```
 
 ```sh
-sudo rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus*
+rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
+&& tigervncserver -cleanslate  || tigervncserver -kill    \
+|| pkill -9 novnc_proxy || pgrep -f websockify | xargs kill > /dev/null
 ```
