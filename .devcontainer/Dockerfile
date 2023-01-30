@@ -187,8 +187,6 @@ COPY gp-vncsession /usr/bin/
 RUN chmod 0755 "$(which gp-vncsession)" \
 	&& printf '%s\n' 'export DISPLAY=:0' \
 	'gp-vncsession' >> "$HOME/.bashrc"
-# Add X11 dotfiles
-#COPY --chown=gitpod:gitpod .xinitrc $HOME/
 
 USER gitpod
 
