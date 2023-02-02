@@ -1,4 +1,4 @@
 workspaceLocation: "."
 image:
-  file: .devcontainer/Dockerfile
+  file: .devcontainer/gitpod-workspace-full-vnc.Dockerfile
   context: .devcontainer
