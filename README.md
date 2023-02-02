@@ -119,7 +119,7 @@ Effective processes which need to run for desktop:-
 ```
 2. Perl script for vncserver
 * launching Xtigervnc /usr/bin/vncserver -> /etc/alternatives/vncserver -> /usr/bin/tigervncserver
-* Xvnc-session (VNC startup script) after launching Xtigervnc (exec [/etc/X11/Xsession](https://manpages.ubuntu.com/manpages/bionic/man5/Xsession.5.html))
+* Xvnc-session (VNC startup script) /etc/X11/Xvnc-session after launching Xtigervnc (exec [/etc/X11/Xsession](https://manpages.ubuntu.com/manpages/bionic/man5/Xsession.5.html))
   * /etc/X11/Xsession
     * writes to $HOME/.xsession-errors
     * loops in folder /etc/X11/Xsession.d
