@@ -215,3 +215,6 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 && tigervncserver -cleanslate  || tigervncserver -kill    \
 || pkill -9 novnc_proxy || pgrep -f websockify | xargs kill > /dev/null
 ```
+
+## Links
+* http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
