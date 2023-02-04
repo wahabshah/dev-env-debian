@@ -218,3 +218,4 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
+* https://www.abcdesktop.io/guiappsoddocker/
