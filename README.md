@@ -14,7 +14,7 @@
 * Session Manager: such as (**xfce4-session** or XDM or GDM)
 * **Window Manager** : (such as Openbox or Fluxbox or **xfwm4** or Xfwm)
 * Desktop Environment : (such as **xfsettingsd, xfce4-panel, Thunar --daemon, xfdesktop**)
-* **Proxy VNC Server** : (such as **Novnc**)
+* **VNC Client** : (such as **Novnc**)
 * Application Clients : (such as **Chrome**)
 * Toolkits : (such as **Qt6**)
 
