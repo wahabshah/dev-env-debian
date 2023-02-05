@@ -199,6 +199,7 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 
 * https://doc.qt.io/qt-6/embedded-linux.html
 * https://doc.qt.io/qt-6/qpa.html
+* https://s3.amazonaws.com/bizzabo.file.upload/8ZhfXU7lRlqkGcs9WVak_Make_your_Qt_UI_available_to_any_browser_in_5_easy_steps%20-%20Luca_Ottaviano.pdf
 
 * `QPA plugins` are responsible for the actual rendering of the Qt application, most often on screen. There are plugins for Android, Windows, Linux (xcb being the default for X11) and Wayland, but also for more exotic platforms like Haiku, WinRT or Mir.
 * All avalilable ones :-
