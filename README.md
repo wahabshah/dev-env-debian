@@ -11,8 +11,8 @@
 ![image](https://user-images.githubusercontent.com/8818025/215270218-99300128-2b6a-4ac9-99bb-d3d9c8848fa5.png)
 
 * Display Manager : None
-* **X Windows Server** : (such as Xvfb or **Xtigervnc => tigervncserver** or X Server or Xvnc or XDummy or xf86-video-dummy)
-* **VNC Server** : (such as X11vnc or **Xtigervnc => tigervncserver** or Xvnc)
+* **X Windows Server** : (such as Xvfb or **Xvnc => Xtigervnc => tigervncserver** or X Server or XDummy or xf86-video-dummy)
+* **VNC Server** : (such as X11vnc or **Xvnc => Xtigervnc => tigervncserver**)
 * Session Manager: such as (**xfce4-session** or XDM or GDM)
 * **Window Manager** : (such as Openbox or Fluxbox or **xfwm4** or Xfwm)
 * Desktop Environment : (such as **xfsettingsd, xfce4-panel, Thunar --daemon, xfdesktop**)
