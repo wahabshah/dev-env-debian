@@ -18,7 +18,7 @@
 	"extensions": ["ms-vscode.cpptools"],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	 //"forwardPorts": [ 5900, 6080 ],
+	"forwardPorts": [ 5900, 6080 ],
 
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
 	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
