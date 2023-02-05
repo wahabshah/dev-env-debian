@@ -229,7 +229,52 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
       ./Qt6QuickApp -platform vnc:port=5902
       Access to the [(server's hostname or IP address):5902] from a client computer with vnc client
       ```
+  * `WebAssembly` is a QPA (Qt Platform Abstraction) plugin that lets you build Qt applications, which can be integrated into your web pages. 
+    * It doesn’t require any client-side installations and reduces the server-side resource usage.
+    * https://doc.qt.io/qt-6/wasm.html
+    * Emscripten is a toolchain for compiling to WebAssembly. It lets you run Qt on the web at near-native speed without browser plugins.
+    * http://qtandeverything.blogspot.com/2021/01/qt-6-webassembly.html
+    * https://emscripten.org/docs/getting_started/downloads.html
+      ```sh
+      # Get the emsdk repo
+      git clone https://github.com/emscripten-core/emsdk.git
 
+      # Enter that directory
+      cd emsdk
+      # Download and install the latest SDK tools.
+      ./emsdk install latest
+
+      # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
+      ./emsdk activate latest
+
+      # Activate PATH and other environment variables in the current terminal
+      source ./emsdk_env.sh
+
+      # Installing Qt 
+
+      # Configure Qt as a cross-compile build for the wasm-emscripten platform
+      wget https://download.qt.io/official_releases/qt/6.4/6.4.2/single/qt-everywhere-src-6.4.2.tar.xz
+      tar xf qt-everywhere-src-6.4.2.tar.xz
+      cd qt-everywhere-src-6.4.2
+      ./configure -qt-host-path /path/to/Qt -platform wasm-emscripten -prefix $PWD/qtbase
+      
+      # Build the required modules:
+      cmake --build . -t qtbase -t qtdeclarative [-t another_module]
+      OR
+      cmake -DFEATURE_developer_build=ON -DFEATURE_headersclean=OFF -DWARNINGS_ARE_ERRORS=OFF -DQT_BUILD_EXAMPLES=OFF -DQT_BUILD_TESTS=OFF -DCMAKE_GENERATOR=Ninja -DQT_HOST_PATH=/development/platforms/desktop/qtbase -DCMAKE_TOOLCHAIN_FILE=/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake /depot/qt/qt5/qtbase
+      
+      # Building Applications on the Command Line: Qt for WebAssembly supports building applications using qmake and make, or CMake with ninja or make.
+      cd /path-to-hello-webassembly-project
+      mkdir build && cd build
+      /path-to-qt-with-webassembly/5.13.2/wasm_32/bin/qmake ..
+      make 
+      OR 
+      $ /path/to/qt-wasm/qtbase/bin/qt-cmake .
+      $ cmake --build .
+      
+      # Running Applications
+      /path/to/emscripten/emrun --browser=firefox appname.html
+      ```
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
 * https://www.abcdesktop.io/guiappsoddocker/
