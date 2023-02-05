@@ -198,3 +198,11 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
 * https://www.abcdesktop.io/guiappsoddocker/
+* https://www.server-world.info/en/note?os=Debian_11&p=desktop&f=8 => noVNC which is a VNC Client tool to connect to VNC server via Web Browser
+  ```sh
+  apt -y install novnc python3-websockify
+  // Start X-Server
+  openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
+  websockify -D --web=/usr/share/novnc/ --cert=/home/debian/novnc.pem 6080 localhost:5901
+  Access to the [https://(server's hostname or IP address):6080/vnc.html] from a client computer with web browser
+  ```
