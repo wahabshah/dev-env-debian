@@ -195,6 +195,40 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 || pkill -9 novnc_proxy || pgrep -f websockify | xargs kill > /dev/null
 ```
 
+### Qt Platform Plugins
+
+* https://doc.qt.io/qt-6/embedded-linux.html
+* https://doc.qt.io/qt-6/qpa.html
+
+* `QPA plugins` are responsible for the actual rendering of the Qt application, most often on screen. There are plugins for Android, Windows, Linux (xcb being the default for X11) and Wayland, but also for more exotic platforms like Haiku, WinRT or Mir.
+* All avalilable ones :-
+  ```sh
+  gitpod / (main) $ ls -alh /usr/lib/x86_64-linux-gnu/qt6/plugins/platforms/
+  total 948K
+  drwxr-xr-x  2 root root 4.0K Feb  5 07:26 .
+  drwxr-xr-x 14 root root 4.0K Feb  5 07:26 ..
+  -rw-r--r--  1 root root  19K Dec 30 15:58 libqeglfs.so
+  -rw-r--r--  1 root root 369K Dec 30 15:58 libqlinuxfb.so
+  -rw-r--r--  1 root root  43K Dec 30 15:58 libqminimalegl.so
+  -rw-r--r--  1 root root  35K Dec 30 15:58 libqminimal.so
+  -rw-r--r--  1 root root 107K Dec 30 15:58 libqoffscreen.so
+  -rw-r--r--  1 root root 232K Dec 30 15:58 libqvkkhrdisplay.so
+  -rw-r--r--  1 root root 108K Dec 30 15:58 libqvnc.so
+  -rw-r--r--  1 root root  19K Dec 30 15:58 libqxcb.so
+  ```
+* Different QPA (Qt Platform Abstraction) plugin :-
+  * `EGLFS` is a QPA (Qt Platform Abstraction) plugin for running Qt applications on top of EGL and OpenGL ES 2.0, without an actual windowing system like X11 or Wayland.
+    * In addition to Qt Quick 2 and native OpenGL applications, EGLFS supports software-rendered windows, like QWidget, too.
+  * `WebGL` is a QPA (Qt Platform Abstraction) plugin to stream an application directly to a website.
+  * `VNC` is a QPA (Qt Platform Abstraction) plugin to expose the application over VNC.
+    * https://www.qt.io/blog/commercial-add-on-qt-vnc-server => latest addition to qt6 to be able to mirror qt application to display and as vnc server
+    * https://raymii.org/s/articles/Expose_any_QT_program_via_VNC.html
+    * https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/vnc/qvncintegration.cpp?h=dev
+      ```sh
+      ./Qt6QuickApp -platform vnc:port=5902
+      Access to the [(server's hostname or IP address):5902] from a client computer with vnc client
+      ```
+
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
 * https://www.abcdesktop.io/guiappsoddocker/
