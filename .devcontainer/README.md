@@ -276,9 +276,13 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 
       # Activate PATH and other environment variables in the current terminal
       source ./emsdk_env.sh
-
+      ```
+      ```sh
       # Installing Qt with WebAssembly
-
+      ```
+      ![image](https://user-images.githubusercontent.com/8818025/217069540-4c0a71e2-fca6-42b5-8be3-a963e1288913.png)
+      ```sh
+      # OR Compile Qt with WebAssembly
       # Configure Qt as a cross-compile build for the wasm-emscripten platform
       wget https://download.qt.io/official_releases/qt/6.4/6.4.2/single/qt-everywhere-src-6.4.2.tar.xz
       tar xf qt-everywhere-src-6.4.2.tar.xz
@@ -289,7 +293,8 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
       cmake --build . -t qtbase -t qtdeclarative [-t another_module]
       OR
       cmake -DFEATURE_developer_build=ON -DFEATURE_headersclean=OFF -DWARNINGS_ARE_ERRORS=OFF -DQT_BUILD_EXAMPLES=OFF -DQT_BUILD_TESTS=OFF -DCMAKE_GENERATOR=Ninja -DQT_HOST_PATH=/development/platforms/desktop/qtbase -DCMAKE_TOOLCHAIN_FILE=/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake /depot/qt/qt5/qtbase
-      
+      ```
+      ```sh
       # Building Applications on the Command Line: Qt for WebAssembly supports building applications using qmake and make, or CMake with ninja or make.
       cd /workspaces/dev-env-debian/Qt6QuickApp
       mkdir build_wasm && cd build_wasm
