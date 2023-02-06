@@ -188,7 +188,31 @@ xfdesktop
 * https://packages.debian.org/de/source/sid/qt6-declarative
 
 ```sh
-sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtcore qml6-module-qtqml qml6-module-qtquick-controls qml6-module-qtquick-window
+sudo apt-get install build-essential cmake libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
+qml6-module-qt-labs-animation \
+qml6-module-qt-labs-folderlistmodel \
+qml6-module-qt-labs-platform \
+qml6-module-qt-labs-qmlmodels \
+qml6-module-qt-labs-settings \
+qml6-module-qt-labs-sharedimage \
+qml6-module-qt-labs-wavefrontmesh \
+qml6-module-qtcore \
+qml6-module-qtqml \
+qml6-module-qtqml-models \
+qml6-module-qtqml-workerscript \
+qml6-module-qtqml-xmllistmodel \
+qml6-module-qtquick \
+qml6-module-qtquick-controls \
+qml6-module-qtquick-dialogs \
+qml6-module-qtquick-layouts \
+qml6-module-qtquick-localstorage \
+qml6-module-qtquick-nativestyle \
+qml6-module-qtquick-particles \
+qml6-module-qtquick-shapes \
+qml6-module-qtquick-templates \
+qml6-module-qtquick-tooling \
+qml6-module-qtquick-window \
+qml6-module-qttest 
 ```
 
 ```sh
@@ -286,3 +310,29 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
   websockify -D --web=/usr/share/novnc/ --cert=/home/debian/novnc.pem 6080 localhost:5901
   Access to the [https://(server's hostname or IP address):6080/vnc.html] from a client computer with web browser
   ```
+
+
+qml6-module-qt-labs-animation
+qml6-module-qt-labs-folderlistmodel
+qml6-module-qt-labs-platform
+qml6-module-qt-labs-qmlmodels
+qml6-module-qt-labs-settings
+qml6-module-qt-labs-sharedimage
+qml6-module-qt-labs-wavefrontmesh
+qml6-module-qtcore
+qml6-module-qtqml
+qml6-module-qtqml-models
+qml6-module-qtqml-workerscript
+qml6-module-qtqml-xmllistmodel
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-dialogs
+qml6-module-qtquick-layouts
+qml6-module-qtquick-localstorage
+qml6-module-qtquick-nativestyle
+qml6-module-qtquick-particles
+qml6-module-qtquick-shapes
+qml6-module-qtquick-templates
+qml6-module-qtquick-tooling
+qml6-module-qtquick-window
+qml6-module-qttest
