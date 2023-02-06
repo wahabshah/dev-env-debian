@@ -244,16 +244,16 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 
       # Enter that directory
       cd emsdk
-      # Download and install the latest SDK tools. 3.1.14
-      ./emsdk install latest
+      # Download and install the latest SDK tools.
+      ./emsdk install 3.1.14
 
       # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
-      ./emsdk activate latest
+      ./emsdk activate 3.1.14
 
       # Activate PATH and other environment variables in the current terminal
       source ./emsdk_env.sh
 
-      # Installing Qt 
+      # Installing Qt with WebAssembly
 
       # Configure Qt as a cross-compile build for the wasm-emscripten platform
       wget https://download.qt.io/official_releases/qt/6.4/6.4.2/single/qt-everywhere-src-6.4.2.tar.xz
@@ -267,16 +267,13 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
       cmake -DFEATURE_developer_build=ON -DFEATURE_headersclean=OFF -DWARNINGS_ARE_ERRORS=OFF -DQT_BUILD_EXAMPLES=OFF -DQT_BUILD_TESTS=OFF -DCMAKE_GENERATOR=Ninja -DQT_HOST_PATH=/development/platforms/desktop/qtbase -DCMAKE_TOOLCHAIN_FILE=/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake /depot/qt/qt5/qtbase
       
       # Building Applications on the Command Line: Qt for WebAssembly supports building applications using qmake and make, or CMake with ninja or make.
-      cd /path-to-hello-webassembly-project
-      mkdir build && cd build
-      /path-to-qt-with-webassembly/5.13.2/wasm_32/bin/qmake ..
-      make 
-      OR 
-      $ /path/to/qt-wasm/qtbase/bin/qt-cmake .
-      $ cmake --build .
+      cd /workspaces/dev-env-debian/Qt6QuickApp
+      mkdir build_wasm && cd build_wasm
+      /home/gitpod/Qt/6.4.2/wasm_32/bin/qt-cmake ..
+      cmake --build .
       
       # Running Applications
-      /path/to/emscripten/emrun --browser=firefox appname.html
+      $EMSDK/upstream/emscripten/emrun --browser=chrome Qt6QuickApp.html
       ```
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
