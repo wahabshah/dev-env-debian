@@ -196,7 +196,7 @@ USER root
 
 RUN install-packages \
 	build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
-    cmake qml6-module-qtquick-controls qml6-module-qtquick-window \
+    cmake qml6-module-qtcore qml6-module-qtqml qml6-module-qtquick-controls qml6-module-qtquick-window \
     pkg-config liburing-dev gdb
 RUN echo "deb https://deb.debian.org/debian experimental main" > /etc/apt/sources.list.d/debian-experimental.list \
     && install-packages -t experimental libboost-dev

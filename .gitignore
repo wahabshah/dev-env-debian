@@ -1,3 +1,4 @@
 build*
 CMakeLists*.user
 CMakeLists*.user*
+qt-everywhere*

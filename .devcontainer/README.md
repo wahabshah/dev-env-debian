@@ -185,8 +185,10 @@ xfdesktop
 
 ### Qt6 Installation 
 
+* https://packages.debian.org/de/source/sid/qt6-declarative
+
 ```sh
-sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtquick-controls qml6-module-qtquick-window
+sudo apt-get install build-essential libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev cmake qml6-module-qtcore qml6-module-qtqml qml6-module-qtquick-controls qml6-module-qtquick-window
 ```
 
 ```sh
@@ -234,6 +236,7 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
     * https://doc.qt.io/qt-6/wasm.html
     * Emscripten is a toolchain for compiling to WebAssembly. It lets you run Qt on the web at near-native speed without browser plugins.
     * http://qtandeverything.blogspot.com/2021/01/qt-6-webassembly.html
+    * https://itnext.io/developing-web-apps-using-qml-and-qt-for-webassembly-aa84453f2f61
     * https://emscripten.org/docs/getting_started/downloads.html
       ```sh
       # Get the emsdk repo
@@ -241,7 +244,7 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 
       # Enter that directory
       cd emsdk
-      # Download and install the latest SDK tools.
+      # Download and install the latest SDK tools. 3.1.14
       ./emsdk install latest
 
       # Make the "latest" SDK "active" for the current user. (writes .emscripten file)
