@@ -185,7 +185,8 @@ xfdesktop
 
 ### Qt6 Installation 
 
-* https://packages.debian.org/de/source/sid/qt6-declarative
+* https://packages.debian.org/en/source/bookworm/misc/
+  * https://packages.debian.org/de/source/bookworm/qt6-declarative
 
 ```sh
 sudo apt-get install build-essential cmake libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
@@ -308,6 +309,30 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
       # Running Applications
       $EMSDK/upstream/emscripten/emrun --browser=chrome Qt6QuickApp.html
       ```
+
+## Qt
+
+* https://doc.qt.io/qt-6/qtmodules.html
+  * Qt Essentials
+  * Qt Add-On
+* https://www.qt.io/hubfs/_website/QML%20Book/qt6book-with-frontpage.pdf
+* https://doc.qt.io/qt-6/qtqml-typesystem-topic.html
+  * `QML Value Types`: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html
+    * The built-in value types supported natively in the QML language: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html#built-in-value-types-provided-by-the-qml-language
+    * QML modules may extend the QML language with more value types: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html#value-types-provided-by-qml-modules
+    * You may define your own value types as described in [Defining QML Types from C++](https://doc.qt.io/qt-6/qtqml-cppintegration-definetypes.html). In order to use types provided by a particular QML module, clients must import that module in their QML documents.
+  * `Javascript Types`
+  * `QML Object Types` :- https://doc.qt.io/qt-6/qtqml-typesystem-objecttypes.html
+    * Defining QML Object Types from QML
+      * Defining Object Types Through QML Documents
+      * Defining Anonymous Types with Component
+    * [Defining QML Types from C++](https://doc.qt.io/qt-6/qtqml-cppintegration-definetypes.html)
+
+* This is a list of all QML types, including QML value types
+  * https://doc.qt.io/qt-6/qmltypes.html
+* This is a list of all QML value types
+  * https://doc.qt.io/qt-6/qmlvaluetypes.html
+
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
 * https://www.abcdesktop.io/guiappsoddocker/
