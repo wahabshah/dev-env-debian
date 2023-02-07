@@ -212,7 +212,8 @@ qml6-module-qtquick-shapes \
 qml6-module-qtquick-templates \
 qml6-module-qtquick-tooling \
 qml6-module-qtquick-window \
-qml6-module-qttest 
+qml6-module-qttest \
+libxcb-xinerama0
 ```
 
 ```sh
@@ -221,6 +222,9 @@ rm -rf /tmp/.X* /tmp/.x /tmp/v* /tmp/dbus* /tmp/bash*     \
 || pkill -9 novnc_proxy || pgrep -f websockify | xargs kill > /dev/null
 ```
 
+```sh
+wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4.5.1-online.run
+```
 ### Qt Platform Plugins
 
 * https://doc.qt.io/qt-6/embedded-linux.html

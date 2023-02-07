@@ -204,7 +204,7 @@ RUN install-packages \
     qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-dialogs qml6-module-qtquick-layouts \
     qml6-module-qtquick-localstorage qml6-module-qtquick-nativestyle qml6-module-qtquick-particles \
     qml6-module-qtquick-shapes qml6-module-qtquick-templates qml6-module-qtquick-tooling \
-    qml6-module-qtquick-window qml6-module-qttest \
+    qml6-module-qtquick-window qml6-module-qttest libxcb-xinerama0 \
     pkg-config liburing-dev gdb tree 
 RUN echo "deb https://deb.debian.org/debian experimental main" > /etc/apt/sources.list.d/debian-experimental.list \
     && install-packages -t experimental libboost-dev
