@@ -314,7 +314,23 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
 
 * https://doc.qt.io/qt-6/qtmodules.html
   * Qt Essentials
+    * **Qt Core** : Core non-graphical classes used by other modules.
+    * **Qt D-Bus**	: Classes for inter-process communication over the D-Bus protocol.
+    * **Qt GUI**	: Base classes for graphical user interface (GUI) components.
+    * **Qt Network**	: Classes to make network programming easier and more portable.
+    * **Qt QML**	: Classes for QML and JavaScript languages.
+      * **Qt QML Models** : This QML module contains types for defining data models in QML.
+    * **Qt Quick**	: A declarative framework for building highly dynamic applications with custom user interfaces.
+      * **Qt Quick Controls**	: Provides lightweight QML types for creating performant user interfaces for desktop, embedded, and mobile devices. These types employ a simple styling architecture and are very efficient.
+      * **Qt Quick Dialogs**	: Types for creating and interacting with system dialogs from a Qt Quick application.
+      * **Qt Quick Layouts** :	Layouts are items that are used to arrange Qt Quick 2 based items in the user interface.
+      * **Qt Quick Local Storage** : a submodule containing a JavaScript interface for an SQLite database
+      * **Qt Particles** : provides a particle system for QML applications
+      * **Qt Quick Test**	: A unit test framework for QML applications, where the test cases are written as JavaScript functions.
+    * **Qt Test**	: Classes for unit testing Qt applications and libraries.
+    * **Qt Widgets**	: Classes to extend Qt GUI with C++ widgets.
   * Qt Add-On
+    * **Active Qt**	:  Classes for applications which use ActiveX and COM 
 * https://www.qt.io/hubfs/_website/QML%20Book/qt6book-with-frontpage.pdf
 * https://doc.qt.io/qt-6/qtqml-typesystem-topic.html
   * `QML Value Types`: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html
