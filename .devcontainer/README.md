@@ -319,15 +319,25 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
     * **Qt GUI**	: Base classes for graphical user interface (GUI) components.
     * **Qt Network**	: Classes to make network programming easier and more portable.
     * **Qt QML**	: Classes for QML and JavaScript languages.
-      * Qt QML QML Types ??
-      * 
-      * Qt QML Value Types ?? 
+      * Qt QML QML Types
+        * Binding Enables the arbitrary creation of property bindings
+        * Component Encapsulates a QML component definition
+        * Connections Describes generalized connections to signals
+        * Date Provides date functions
+        * Locale Provides locale specific properties and formatted data
+        * LoggingCategory Defines a logging category in QML
+        * Number Object provides represents a number value
+        * Qt Provides a global object with useful enums and functions from Qt
+        * QtObject A basic QML type
+        * String Object represents a string value
+        * Timer Triggers a handler at a specified interval
+      * Qt QML Value Types
         * point : 
         * rect
         * size
       * Submodules 
         * **Qt QML Models** : This QML module contains types for defining data models in QML.
-          * Qt QML Models QML Object Types 
+          * Qt QML Models QML Types 
             * DelegateModel : Encapsulates a model and delegate
             * DelegateModelGroup : Encapsulates a filtered set of visual data items
             * Instantiator : Dynamically creates objects
