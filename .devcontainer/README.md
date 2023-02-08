@@ -320,6 +320,14 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
     * **Qt Network**	: Classes to make network programming easier and more portable.
     * **Qt QML**	: Classes for QML and JavaScript languages.
       * **Qt QML Models** : This QML module contains types for defining data models in QML.
+        * **DelegateModel** : Encapsulates a model and delegate
+        * **DelegateModelGroup** : Encapsulates a filtered set of visual data items
+        * **Instantiator** : Dynamically creates objects
+        * **ItemSelectionModel** : Instantiates a QItemSelectionModel to be used in conjunction with a QAbstractItemModel and any view supporting it
+        * **ListElement** : Defines a data item in a ListModel
+        * **ListModel** : Defines a free-form list data source
+        * **ObjectModel** : Defines a set of items to be used as a model
+        * **Package** : Specifies a collection of named items 
     * **Qt Quick**	: A declarative framework for building highly dynamic applications with custom user interfaces.
       * **Qt Quick Controls**	: Provides lightweight QML types for creating performant user interfaces for desktop, embedded, and mobile devices. These types employ a simple styling architecture and are very efficient.
       * **Qt Quick Dialogs**	: Types for creating and interacting with system dialogs from a Qt Quick application.
@@ -348,6 +356,10 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
   * https://doc.qt.io/qt-6/qmltypes.html
 * This is a list of all QML value types
   * https://doc.qt.io/qt-6/qmlvaluetypes.html
+
+* https://blog.felgo.com/cross-platform-app-development/avoid-cpp-models-qt
+  * https://github.com/benlau/qsyncable
+
 
 ## Links
 * http://www.umsl.edu/~eckerta/vnc_docs/xvnc.html
