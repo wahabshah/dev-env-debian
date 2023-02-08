@@ -309,6 +309,37 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
       # Running Applications
       $EMSDK/upstream/emscripten/emrun --browser=chrome Qt6QuickApp.html
       ```
+## Gammaray
+
+libkf5syntaxhighlighting-dev
+qt6-base-private-dev
+qt6-declarative-private-dev
+lldb
+
+* https://sources.debian.org/src/gammaray/2.11.3-2/
+* https://sources.debian.org/src/gammaray/2.11.3-2/debian/control/ => showing 7 packages
+* https://packages.debian.org/source/bookworm/gammaray => showing same 7 packages
+  * gammaray : Tool for examining the internals of Qt application
+  * gammaray-dev : GammaRay plugin development files
+  * gammaray-plugin-bluetooth : QtBluetooth type support for GammaRay
+  * gammaray-plugin-kjobtracker : KJob tracker plugin for GammaRay
+  * gammaray-plugin-positioning : Qt5Positioning type support for GammaRay
+  * gammaray-plugin-quickinspector : GammaRay plugin for inspecting QtQuick2 applications
+  * gammaray-plugin-waylandinspector : Wayland compositor inspector plugin for GammaRay
+
+```sh
+git clone https://github.com/KDAB/GammaRay.git
+git checkout v2.11.3
+cd GammaRay
+mkdir build
+cd build
+cmake -DGAMMARAY_QT6_BUILD=true -DCMAKE_INSTALL_PREFIX=/workspaces/dev-env-debian/GammaRay-6.4.2 ..
+make
+make install
+```
+## Using Text QML Type
+* https://doc.qt.io/qt-6/qml-qtquick-text.html
+* https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html
 
 ## Qt
 
@@ -541,29 +572,3 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
   websockify -D --web=/usr/share/novnc/ --cert=/home/debian/novnc.pem 6080 localhost:5901
   Access to the [https://(server's hostname or IP address):6080/vnc.html] from a client computer with web browser
   ```
-
-
-qml6-module-qt-labs-animation
-qml6-module-qt-labs-folderlistmodel
-qml6-module-qt-labs-platform
-qml6-module-qt-labs-qmlmodels
-qml6-module-qt-labs-settings
-qml6-module-qt-labs-sharedimage
-qml6-module-qt-labs-wavefrontmesh
-qml6-module-qtcore
-qml6-module-qtqml
-qml6-module-qtqml-models
-qml6-module-qtqml-workerscript
-qml6-module-qtqml-xmllistmodel
-qml6-module-qtquick
-qml6-module-qtquick-controls
-qml6-module-qtquick-dialogs
-qml6-module-qtquick-layouts
-qml6-module-qtquick-localstorage
-qml6-module-qtquick-nativestyle
-qml6-module-qtquick-particles
-qml6-module-qtquick-shapes
-qml6-module-qtquick-templates
-qml6-module-qtquick-tooling
-qml6-module-qtquick-window
-qml6-module-qttest
