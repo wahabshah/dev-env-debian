@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(Qt6QuickApp VERSION 0.1 LANGUAGES CXX)
 
-
+# https://doc.qt.io/qt-6/qtqml-tool-qmltc.html
 # Use "my_qmltc_example" as an application name:
 set(application_name my_qmltc_example)
 
