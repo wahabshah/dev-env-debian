@@ -341,6 +341,9 @@ make install
 * https://doc.qt.io/qt-6/qml-qtquick-text.html
 * [qml/QtQuick/plugins.qmltypes](./usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
 * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
+  * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickimplicitsizeitem_p.h.html#QQuickImplicitSizeItem
+  * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickitem.h.html#97
+  * https://codebrowser.dev/data/symbol.html?root=../qt5&ref=QQuickText#graph 
 * ![image](https://user-images.githubusercontent.com/8818025/217579299-00aa5442-c9ca-4a30-8108-263b73ef3b9c.png)
 
 ## Qt
