@@ -329,7 +329,6 @@ lldb
 
 ```sh
 git clone https://github.com/KDAB/GammaRay.git
-git checkout v2.11.3
 cd GammaRay
 mkdir build
 cd build
@@ -337,9 +336,12 @@ cmake -DGAMMARAY_QT6_BUILD=true -DCMAKE_INSTALL_PREFIX=/workspaces/dev-env-debia
 make
 make install
 ```
-## Using Text QML Type
+
+## Using Qt Quick Text QML Type
 * https://doc.qt.io/qt-6/qml-qtquick-text.html
-* https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html
+* [qml/QtQuick/plugins.qmltypes](./usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
+* https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
+* ![image](https://user-images.githubusercontent.com/8818025/217579299-00aa5442-c9ca-4a30-8108-263b73ef3b9c.png)
 
 ## Qt
 
@@ -498,7 +500,8 @@ make install
         * Screen Attached object provides information about the Screen an Item or Window is displayed on
         * ScriptAction Defines scripts to be run during an animation
         * SequentialAnimation Allows animations to be run sequentially
-        * ShaderEffect Applies custom shaders to a rectangle ShaderEffectSource Renders a Qt Quick item into a texture and displays it
+        * ShaderEffect Applies custom shaders to a rectangle 
+        * ShaderEffectSource Renders a Qt Quick item into a texture and displays it
         * Shortcut Provides keyboard shortcuts 
         * SinglePointHandler Abstract handler for single-point Pointer Events
         * SmoothedAnimation Allows a property to smoothly track a value
