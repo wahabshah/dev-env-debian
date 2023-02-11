@@ -13,15 +13,6 @@ jobs:
     - name : Checkout source code
       uses: actions/checkout@v3
 
-    - name: Install Qt GCC
-      uses: jurplel/install-qt-action@v3
-      with:
-        aqtversion: '==2.1.*'
-        version: '6.4.2'
-        host: 'linux'
-        target: 'desktop'
-        arch: 'gcc_64'
-        
     - name: Install Emscripten
       uses: mymindstorm/setup-emsdk@v11
       with:
@@ -35,6 +26,15 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'wasm_32'
+        
+    - name: Install Qt GCC
+      uses: jurplel/install-qt-action@v3
+      with:
+        aqtversion: '==2.1.*'
+        version: '6.4.2'
+        host: 'linux'
+        target: 'desktop'
+        arch: 'gcc_64'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run:  cd Qt6QuickApp && mkdir -p build_wasm && cd build_wasm && qt-cmake .. && cmake --build .
