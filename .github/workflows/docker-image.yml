@@ -11,7 +11,7 @@ jobs:
     steps:
     
     - name: Install apt packages
-      run: sudo apt update && sudo apt install cmake ninja
+      run: sudo apt update && sudo apt install cmake ninja-build
       
     - uses: actions/checkout@v3
 
