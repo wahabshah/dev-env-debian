@@ -35,7 +35,7 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'gcc_64'
-        tools: 'tools_cmake'
+        tools: 'tools_cmake tools_ninja'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake
