@@ -289,21 +289,24 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
       ```sh
       # OR Compile Qt with WebAssembly
       # Configure Qt as a cross-compile build for the wasm-emscripten platform
+      . /workspaces/dev-env-debian/emsdk/emsdk_env.sh
       wget https://download.qt.io/official_releases/qt/6.4/6.4.2/single/qt-everywhere-src-6.4.2.tar.xz
       tar xf qt-everywhere-src-6.4.2.tar.xz
-      cd qt-everywhere-src-6.4.2
-      ./configure -qt-host-path /path/to/Qt -platform wasm-emscripten -prefix $PWD/qtbase
+      mkdir qt6-build
+      cd qt6-build
+      ../qt-everywhere-src-6.4.2/configure -qt-host-path /usr -platform wasm-emscripten -developer-build  -- -DCMAKE_LIBRARY_PATH=x86_64-linux-gnu -DQT_HOST_PATH_CMAKE_DIR=/usr/lib/x86_64-linux-gnu/cmake -DQT_BUILD_TESTS_BY_DEFAULT=OFF -DQT_BUILD_EXAMPLES=OFF -DWARNINGS_ARE_ERRORS=OFF
       
       # Build the required modules:
-      cmake --build . -t qtbase -t qtdeclarative [-t another_module]
-      OR
-      cmake -DFEATURE_developer_build=ON -DFEATURE_headersclean=OFF -DWARNINGS_ARE_ERRORS=OFF -DQT_BUILD_EXAMPLES=OFF -DQT_BUILD_TESTS=OFF -DCMAKE_GENERATOR=Ninja -DQT_HOST_PATH=/development/platforms/desktop/qtbase -DCMAKE_TOOLCHAIN_FILE=/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake /depot/qt/qt5/qtbase
+      cmake --build ../qt-everywhere-src-6.4.2 -t qtbase -t qtdeclarative -t qtimageformats -t qtsvg --parallel
       ```
       ```sh
       # Building Applications on the Command Line: Qt for WebAssembly supports building applications using qmake and make, or CMake with ninja or make.
       cd /workspaces/dev-env-debian/Qt6QuickApp
       mkdir build_wasm && cd build_wasm
       /home/gitpod/Qt/6.4.2/wasm_32/bin/qt-cmake ..
+      # /workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/bin/qt-cmake ..
+      # /workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/lib/cmake/Qt6/FindWrapZLIB.cmake
+      # list(APPEND CMAKE_MODULE_PATH "/workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/cmake") 
       cmake --build .
       
       # Running Applications
@@ -337,16 +340,76 @@ make
 make install
 ```
 
+  * 
 ## Using Qt Quick Text QML Type
 * https://doc.qt.io/qt-6/qml-qtquick-text.html
 * [qml/QtQuick/plugins.qmltypes](./usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
-* https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
+* Qt5
+  * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickimplicitsizeitem_p.h.html#QQuickImplicitSizeItem
+  * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktextinterface_p.h
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickitem.h.html#97
-  * https://codebrowser.dev/data/symbol.html?root=../qt5&ref=QQuickText#graph 
-* ![image](https://user-images.githubusercontent.com/8818025/217579299-00aa5442-c9ca-4a30-8108-263b73ef3b9c.png)
+* Qt6
+  * https://github.com/qt/qtdeclarative/blob/6.4.2/src/quick/items/qquicktext_p.h#L27
+  * https://github.com/qt/qtdeclarative/blob/6.4.2/src/quick/items/qquickimplicitsizeitem_p.h#L24
+  * https://github.com/qt/qtdeclarative/blob/6.4.2/src/quick/items/qquicktextinterface_p.h
+  * https://github.com/qt/qtdeclarative/blob/6.4.2/src/quick/items/qquickitem.h#L63
+* https://codebrowser.dev/data/symbol.html?root=../qt5&ref=QQuickText#graph 
+  * ![image](https://user-images.githubusercontent.com/8818025/217579299-00aa5442-c9ca-4a30-8108-263b73ef3b9c.png)
 
-## Qt
+## Qt Sources
+
+* https://github.com/qt/qt5/tree/6.4.2
+  * qt3d
+  * qt5compat
+  * qtactiveqt
+  * qtbase
+  * qtcanvas3d
+  * qtcharts
+  * qtcoap
+  * qtconnectivity
+  * qtdatavis3d
+  * qtdeclarative
+  * qtdoc
+  * qtfeedback
+  * qtgamepad
+  * qthttpserver
+  * qtimageformats
+  * qtlanguageserver
+  * qtlocation
+  * qtlottie
+  * qtmqtt
+  * qtmultimedia
+  * qtnetworkauth
+  * qtopcua
+  * qtpim
+  * qtpositioning
+  * qtqa
+  * qtquick3d
+  * qtquick3dphysics
+  * qtquicktimeline
+  * qtremoteobjects
+  * qtrepotools
+  * qtscxml
+  * qtsensors
+  * qtserialbus
+  * qtserialport
+  * qtshadertools
+  * qtspeech
+  * qtsvg
+  * qtsystems
+  * qttools
+  * qttranslations
+  * qtvirtualkeyboard
+  * qtwayland
+  * qtwebchannel
+  * qtwebengine
+  * qtwebglplugin
+  * qtwebsockets
+  * qtwebview
+  * qtxmlpatterns
+
+## Qt Library
 
 * https://doc.qt.io/qt-6/qtmodules.html
   * Qt Essentials
@@ -372,6 +435,7 @@ make install
         * rect
         * size
       * Submodules 
+        * **Qt QML Core**
         * **Qt QML Models** : This QML module contains types for defining data models in QML.
           * Qt QML Models QML Types 
             * DelegateModel : Encapsulates a model and delegate
@@ -386,6 +450,8 @@ make install
             * DelegateChooser : Allows a view to use different delegates for different types of items in the model
             * TableModel : Encapsulates a simple table model
             * TableModelColumn : Represents a column in a model
+        * **Qt QML WorkerScript**
+        * **Qt QML XmlListModel**
     * **Qt Quick**	: A declarative framework for building highly dynamic applications with custom user interfaces.
       * Qt Quick QML Value Types
         * color : ARGB color value
@@ -535,16 +601,60 @@ make install
         * XAnimator Type animates the x position of an Item
         * YAnimator Type animates the y position of an Item
       * Submodules 
-        * **Qt Quick Controls**	: Provides lightweight QML types for creating performant user interfaces for desktop, embedded, and mobile devices. These types employ a simple styling architecture and are very efficient.
+        * **Qt Quick Controls 2**	: Provides lightweight QML types for creating performant user interfaces for desktop, embedded, and mobile devices. These types employ a simple styling architecture and are very efficient.
         * **Qt Quick Dialogs**	: Types for creating and interacting with system dialogs from a Qt Quick application.
         * **Qt Quick Layouts** :	Layouts are items that are used to arrange Qt Quick 2 based items in the user interface.
         * **Qt Quick Local Storage** : a submodule containing a JavaScript interface for an SQLite database
+        * **Qt Quick NativeStyle**
         * **Qt Particles** : provides a particle system for QML applications
+        * **Qt Quick Shapes**
+        * **Qt Quick Templates**        
         * **Qt Quick Test**	: A unit test framework for QML applications, where the test cases are written as JavaScript functions.
     * **Qt Test**	: Classes for unit testing Qt applications and libraries.
     * **Qt Widgets**	: Classes to extend Qt GUI with C++ widgets.
   * Qt Add-On
     * **Active Qt**	:  Classes for applications which use ActiveX and COM 
+    * **Qt 3D**	: Functionality for near-realtime simulation systems with support for 2D and 3D rendering.
+    * **Qt 5 Core Compatibility APIs** : Qt Core APIs that were in Qt 5 but not Qt 6.
+    * Qt Bluetooth	All	Android, iOS, Linux, Boot to Qt, macOS and Windows	Provides access to Bluetooth hardware.
+    * Qt Concurrent	All	All	Classes for writing multi-threaded programs without using low-level threading primitives.
+    * Qt Help	All	All	Classes for integrating documentation into applications.
+    * Qt Image Formats	All	All	Plugins for additional image formats: TIFF, MNG, TGA, WBMP.
+    * Qt Multimedia	All	All*	A rich set of QML types and C++ classes to handle multimedia content. Also includes APIs to handle camera access.
+    * Qt NFC	All	Android, iOS, macOS, Linux and Windows	Provides access to Near-Field communication (NFC) hardware. On desktop platforms NDEF access is only     * supported for Type 4 tags.
+    * Qt OPC UA	All	All (except QNX, WebAssembly)	Protocol for data modeling and exchange of data in industrial applications.
+    * Qt OpenGL	All	All	C++ classes that make it easy to use OpenGL in Qt applications. A separate library of Qt OpenGL Widgets C++ Classes provides a widget for     * rendering OpenGL graphics.
+    * Qt PDF	All	Windows, Linux, and macOS.	Classes and functions for rendering PDF documents.
+    * Qt Positioning	All	Android, iOS, macOS, Linux and Windows	Provides access to position, satellite info and area monitoring classes.
+    * Qt Print Support	All	All	Classes to make printing easier and more portable.
+    * Qt Quick Widgets	All	All	Provides a C++ widget class for displaying a Qt Quick user interface.
+    * Qt Remote Objects	All	All	Provides an easy to use mechanism for sharing a QObject's API (Properties/Signals/Slots) between processes or devices.
+    * Qt SCXML	All	All	Provides classes and tools for creating state machines from SCXML files and embedding them in applications.
+    * Qt Sensors	All	Android, iOS, and Windows	Provides access to sensor hardware.
+    * Qt Serial Bus	All	Linux, Boot to Qt, macOS and Windows	Provides access to serial industrial bus interfaces. Currently, the module supports the CAN bus and     * Modbus protocols.
+    * Qt Serial Port	All	Linux, Boot to Qt, macOS and Windows	Provides classes to interact with hardware and virtual serial ports.
+    * Qt Spatial Audio	All	All	Provides support for spatial audio. Create sound scenes in 3D space containing different sound sources and room related properties     * such as reverb.
+    * Qt SQL	All	All	Classes for database integration using SQL.
+    * Qt State Machine	All	All	Provides classes for creating and executing state graphs.
+    * Qt SVG	All	All	Classes for displaying the contents of SVG files. Supports a subset of the SVG 1.2 Tiny standard. A separate library of Qt SVG Widgets C++     * Classes provides support for rendering SVG files in a widget UI.
+    * Qt TextToSpeech	All	All	Provides support for synthesizing speech from text and playing it as audio output.
+    * Qt UI Tools	All	All	Classes for loading QWidget based forms created in Qt Designer dynamically, at runtime.
+    * Qt WebChannel	All	All	Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients.
+    * Qt WebEngine	All	Windows, Linux, and macOS.	Classes and functions for embedding web content in applications using the Chromium browser project.
+    * Qt WebSockets	All	All	Provides WebSocket communication compliant with RFC 6455.
+    * Qt WebView	All	Platforms with a native web engine.	Displays web content in a QML application by using APIs native to the platform, without the need to     * include a full web browser stack.
+    * Qt XML	All	All	Handling of XML in a Document Object Model (DOM) API.
+    * Qt Charts	All	All	UI Components for displaying visually pleasing charts, driven by static or dynamic data models.
+    * Qt CoAP	All	All	Implements the client side of CoAP defined by RFC 7252.
+    * Qt Data Visualization	All	All	UI Components for creating stunning 3D data visualizations.
+    * Qt Lottie Animation	All	All	A QML API for rendering graphics and animations in JSON format, exported by the Bodymovin plugin for Adobe® After Effects.
+    * Qt MQTT	All	All	Provides an implementation of the MQTT protocol specification.
+    * Qt Network Authorization	All	All	Provides support for OAuth-based authorization to online services.
+    * Qt Quick 3D	All	All	Provides a high-level API for creating 3D content or UIs based on Qt Quick.
+    * Qt Quick Timeline	All	All	Enables keyframe-based animations and parameterization.
+    * Qt Shader Tools	All	All	Provides tools for the cross-platform Qt shader pipeline. These enable processing graphics and compute shaders to make them usable for     * Qt Quick and other components in the Qt ecosystem.
+    * **Qt Virtual Keyboard**	A framework for implementing different input methods as well as a QML virtual     * keyboard. Supports localized keyboard layouts and custom visual themes.
+    * Qt Wayland Compositor	Linux	Linux and Boot to Qt targets.	Provides a framework to develop a Wayland compositor.
 * https://www.qt.io/hubfs/_website/QML%20Book/qt6book-with-frontpage.pdf
 * https://doc.qt.io/qt-6/qtqml-typesystem-topic.html
   * `QML Value Types`: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html
