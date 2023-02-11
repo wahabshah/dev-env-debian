@@ -1,0 +1,9 @@
+-rootPath
+/workspaces/dev-env-debian/Qt6QuickApp
+-cmake-output
+-output-file
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_Qt6QuickApp.cmake
+-importPath
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug
+-importPath
+/usr/lib/x86_64-linux-gnu/qt6/qml

@@ -1,0 +1,10 @@
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/Qt6QuickApp.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/Qt6QuickApp_qmlimportscan.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/edit_cache.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/list_install_components.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/install.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/install/local.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/install/strip.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/Qt6QuickApp_autogen_timestamp_deps.dir
+/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/CMakeFiles/Qt6QuickApp_autogen.dir

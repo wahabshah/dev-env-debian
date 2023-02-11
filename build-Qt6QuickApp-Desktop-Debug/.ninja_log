@@ -1,0 +1,13 @@
+# ninja log v5
+1	28	1675096517866275000	.qt_plugins/Qt6_QmlPlugins_Imports_Qt6QuickApp.cmake	830825be68d13543
+1	28	1675096517866275000	/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_Qt6QuickApp.cmake	830825be68d13543
+28	112	1675096517946275000	Qt6QuickApp_autogen/timestamp	314771eabb65e786
+28	112	1675096517946275000	Qt6QuickApp_autogen/mocs_compilation.cpp	314771eabb65e786
+28	112	1675096517946275000	/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/Qt6QuickApp_autogen/timestamp	314771eabb65e786
+28	112	1675096517946275000	/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/Qt6QuickApp_autogen/mocs_compilation.cpp	314771eabb65e786
+112	125	1675096517966275000	Qt6QuickApp_autogen/EWIEGA46WW/qrc_qml.cpp	37675e310e81cc26
+112	125	1675096517966275000	/workspaces/dev-env-debian/build-Qt6QuickApp-Desktop-Debug/Qt6QuickApp_autogen/EWIEGA46WW/qrc_qml.cpp	37675e310e81cc26
+125	184	1675096518026275000	CMakeFiles/Qt6QuickApp.dir/Qt6QuickApp_autogen/mocs_compilation.cpp.o	555c86bc7910938c
+134	190	1675096518036275000	CMakeFiles/Qt6QuickApp.dir/Qt6QuickApp_autogen/EWIEGA46WW/qrc_qml.cpp.o	51888c1f1840314a
+126	4999	1675096522836275000	CMakeFiles/Qt6QuickApp.dir/main.cpp.o	1fe8a5fd44e68db7
+5000	5510	1675096523356275000	Qt6QuickApp	cf4f7c15240c0487
