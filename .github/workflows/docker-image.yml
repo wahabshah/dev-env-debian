@@ -26,10 +26,11 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'wasm_32'
-        dir: '${{ github.workspace }}/Qt/'
+        dir: '${{ github.workspace }}'
         tools: 'tools_cmake tools_ninja'
         cache: 'true'
         extra: '--autodesktop'
+        py7zrversion: '>=0.20.2'
         
    # - name: Install Qt GCC
    #   uses: jurplel/install-qt-action@v3
@@ -40,6 +41,7 @@ jobs:
    #     target: 'desktop'
    #     arch: 'gcc_64'
    #     tools: 'tools_cmake tools_ninja'
+   #     py7zrversion: '>=0.20.2'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: |
