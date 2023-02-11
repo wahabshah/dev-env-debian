@@ -1,7 +1,8 @@
 name: Deploy to Github pages
-on:
-  push:
-    branches: [ "create-deploy-qt-wasm-gh-pages" ]
+#on:
+#  push:
+#    branches: [ "create-deploy-qt-wasm-gh-pages" ]
+on: workflow_dispatch
 
 jobs:
 
