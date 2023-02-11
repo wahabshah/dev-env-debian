@@ -35,9 +35,10 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'gcc_64'
+        tools: 'tools_cmake'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
-      run: /usr/bin/cmake
+      run: /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake
            -S Qt6QuickApp 
            -B build-Qt6QuickApp-WebAssembly-Debug
            -DCMAKE_GENERATOR:STRING=Ninja
@@ -48,7 +49,7 @@ jobs:
            -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/dev-env-debian/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake 
            -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG 
            && 
-           /usr/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
+           /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
            
     - name: uploade Artifacts 
       uses: actions/upload-artifact@v3
