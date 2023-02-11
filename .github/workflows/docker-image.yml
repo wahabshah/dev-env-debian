@@ -37,4 +37,4 @@ jobs:
         arch: 'gcc_64'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
-      run:  ls Qt/6.4.2/wasm_32/bin && cd Qt6QuickApp && mkdir -p build_wasm && cd build_wasm && ../../Qt/6.4.2/wasm_32/bin/qt-cmake .. && cmake --build .
+      run:  ls /home/runner/work/dev-env-debian/Qt/wasm_32/bin && cd Qt6QuickApp && mkdir -p build_wasm && cd build_wasm && /home/runner/work/dev-env-debian/Qt/wasm_32/bin/qt-cmake .. && cmake --build .
