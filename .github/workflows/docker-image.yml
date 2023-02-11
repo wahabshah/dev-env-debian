@@ -39,18 +39,19 @@ jobs:
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: |
-         ls -alh . &&
-          /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake
-           -S Qt6QuickApp 
-           -B build-Qt6QuickApp-WebAssembly-Debug
-           -DCMAKE_BUILD_TYPE:STRING=Debug 
-           -DCMAKE_PREFIX_PATH:PATH=/home/runner/work/dev-env-debian/Qt/6.4.2/wasm_32
-           -DCMAKE_C_COMPILER:FILEPATH=${EMSDK}/upstream/emscripten/emcc
-           -DCMAKE_CXX_COMPILER:FILEPATH=${EMSDK}/upstream/emscripten/em++ 
-           -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/dev-env-debian/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake 
+         pwd 
+         ls -alh .
+         ls -alh /home/runner/work/dev-env-debian/Qt
+         /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake \
+           -S Qt6QuickApp  \
+           -B build-Qt6QuickApp-WebAssembly-Debug \
+           -DCMAKE_BUILD_TYPE:STRING=Debug \
+           -DCMAKE_PREFIX_PATH:PATH=/home/runner/work/dev-env-debian/Qt/6.4.2/wasm_32 \
+           -DCMAKE_C_COMPILER:FILEPATH=${EMSDK}/upstream/emscripten/emcc \
+           -DCMAKE_CXX_COMPILER:FILEPATH=${EMSDK}/upstream/emscripten/em++  \
+           -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/dev-env-debian/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake \
            -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG 
-           && 
-           /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
+         /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
            
     - name: uploade Artifacts 
       uses: actions/upload-artifact@v3
