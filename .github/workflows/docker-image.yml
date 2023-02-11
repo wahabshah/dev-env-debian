@@ -34,17 +34,6 @@ jobs:
         extra: '--autodesktop'
         py7zrversion: '>=0.20.2'
         
-   # - name: Install Qt GCC
-   #   uses: jurplel/install-qt-action@v3
-   #   with:
-   #     aqtversion: '==3.1.1'
-   #     version: '6.4.2'
-   #     host: 'linux'
-   #     target: 'desktop'
-   #     arch: 'gcc_64'
-   #     tools: 'tools_cmake tools_ninja'
-   #     py7zrversion: '>=0.20.2'
-        
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: |
          pwd 
@@ -55,8 +44,8 @@ jobs:
            -B build-Qt6QuickApp-WebAssembly-Debug \
            -DCMAKE_BUILD_TYPE:STRING=Debug \
            -DCMAKE_PREFIX_PATH:PATH=/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/wasm_32 \
-           -DCMAKE_C_COMPILER:FILEPATH=$EMSDK/upstream/emscripten/emcc \
-           -DCMAKE_CXX_COMPILER:FILEPATH=$EMSDK/upstream/emscripten/em++  \
+           -DCMAKE_C_COMPILER:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/emcc \
+           -DCMAKE_CXX_COMPILER:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++  \
            -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake \
            -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG 
          /usr/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
