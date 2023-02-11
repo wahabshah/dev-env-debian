@@ -47,7 +47,7 @@ jobs:
            -DCMAKE_C_COMPILER:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/emcc \
            -DCMAKE_CXX_COMPILER:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++  \
            -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake \
-           -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG 
+           -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG \
            -DQT_HOST_PATH:PATH=/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/gcc_64
          /usr/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
       shell: bash
@@ -57,3 +57,12 @@ jobs:
       with:
         name: build-Qt6QuickApp-WebAssembly-Debug
         path: build-Qt6QuickApp-WebAssembly-Debug
+    
+    - name : Commit build-Qt6QuickApp-WebAssembly-Debug to Github Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: build-Qt6QuickApp-WebAssembly-Debug # The folder the action should deploy.
+        CLEAN: false # Automatically remove deleted files from the deploy branch
+        TARGET_FOLDER : build-Qt6QuickApp-WebAssembly-Debug
