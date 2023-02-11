@@ -21,7 +21,7 @@ jobs:
     - name: Install Qt WASM
       uses: jurplel/install-qt-action@v3
       with:
-        aqtversion: '==2.1.*'
+        aqtversion: '==3.1.1'
         version: '6.4.2'
         host: 'linux'
         target: 'desktop'
@@ -34,7 +34,7 @@ jobs:
    # - name: Install Qt GCC
    #   uses: jurplel/install-qt-action@v3
    #   with:
-   #     aqtversion: '==2.1.*'
+   #     aqtversion: '==3.1.1'
    #     version: '6.4.2'
    #     host: 'linux'
    #     target: 'desktop'
