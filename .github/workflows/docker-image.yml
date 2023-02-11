@@ -39,8 +39,8 @@ jobs:
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: |
+         ls -alh . &&
           /home/runner/work/dev-env-debian/Qt/Tools/CMake/bin/cmake
-            --debug-output
            -S Qt6QuickApp 
            -B build-Qt6QuickApp-WebAssembly-Debug
            -DCMAKE_BUILD_TYPE:STRING=Debug 
