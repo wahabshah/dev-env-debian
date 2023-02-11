@@ -1,0 +1,9 @@
+-rootPath
+/home/runner/work/dev-env-debian/dev-env-debian/Qt6QuickApp
+-cmake-output
+-output-file
+/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_Qt6QuickApp.cmake
+-importPath
+/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug
+-importPath
+/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/wasm_32/./qml

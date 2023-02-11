@@ -1,0 +1,22 @@
+{
+	"BUILD_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/Qt6QuickApp_autogen",
+	"CMAKE_BINARY_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/Qt6QuickApp",
+	"CMAKE_SOURCE_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/Qt6QuickApp",
+	"INCLUDE_DIR" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/Qt6QuickApp_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/runner/work/dev-env-debian/dev-env-debian/Qt6QuickApp/main.qml"
+	],
+	"LOCK_FILE" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/Qt6QuickApp_autogen.dir/AutoRcc_qml_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "qml" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_qml.cpp",
+	"RCC_EXECUTABLE" : "/home/runner/work/dev-env-debian/dev-env-debian/Qt/6.4.2/gcc_64/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/Qt6QuickApp_autogen.dir/AutoRcc_qml_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/runner/work/dev-env-debian/dev-env-debian/Qt6QuickApp/qml.qrc",
+	"VERBOSITY" : 0
+}

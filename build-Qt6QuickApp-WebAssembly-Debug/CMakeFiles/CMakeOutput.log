@@ -1,0 +1,81 @@
+The target system is: Emscripten - 1 - x86
+The host system is: Linux - 5.15.0-1031-azure - x86_64
+Performing C++ SOURCE FILE Test HAVE_STDATOMIC succeeded with the following output:
+Change Dir: /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c61fb/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c61fb.dir/build.make CMakeFiles/cmTC_c61fb.dir/build
+gmake[1]: Entering directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c61fb.dir/src.cxx.o
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DHAVE_STDATOMIC  -DQT_QML_DEBUG  -std=gnu++17 -MD -MT CMakeFiles/cmTC_c61fb.dir/src.cxx.o -MF CMakeFiles/cmTC_c61fb.dir/src.cxx.o.d -o CMakeFiles/cmTC_c61fb.dir/src.cxx.o -c /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp/src.cxx
+shared:INFO: (Emscripten: Running sanity checks)
+Linking CXX executable cmTC_c61fb.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c61fb.dir/link.txt --verbose=1
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DQT_QML_DEBUG  @CMakeFiles/cmTC_c61fb.dir/objects1.rsp -o cmTC_c61fb.js 
+gmake[1]: Leaving directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <atomic>
+#include <cstdint>
+
+int main(int, char **)
+{
+    volatile std::atomic<char>    size_1;
+    volatile std::atomic<short>   size_2;
+    volatile std::atomic<int>     size_4;
+    volatile std::atomic<int64_t> size_8;
+
+    ++size_1;
+    ++size_2;
+    ++size_4;
+    ++size_8;
+
+    (void)size_1.load(std::memory_order_relaxed);
+    (void)size_2.load(std::memory_order_relaxed);
+    (void)size_4.load(std::memory_order_relaxed);
+    (void)size_8.load(std::memory_order_relaxed);
+
+    return 0;
+}
+Performing C++ SOURCE FILE Test HAVE_GETTIME succeeded with the following output:
+Change Dir: /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_99bbe/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_99bbe.dir/build.make CMakeFiles/cmTC_99bbe.dir/build
+gmake[1]: Entering directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_99bbe.dir/src.cxx.o
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DHAVE_GETTIME  -DQT_QML_DEBUG  -std=gnu++17 -MD -MT CMakeFiles/cmTC_99bbe.dir/src.cxx.o -MF CMakeFiles/cmTC_99bbe.dir/src.cxx.o.d -o CMakeFiles/cmTC_99bbe.dir/src.cxx.o -c /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_99bbe.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_99bbe.dir/link.txt --verbose=1
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DQT_QML_DEBUG  @CMakeFiles/cmTC_99bbe.dir/objects1.rsp -o cmTC_99bbe.js 
+gmake[1]: Leaving directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <unistd.h>
+#include <time.h>
+
+int main(int, char **) {
+    timespec ts; clock_gettime(CLOCK_REALTIME, &ts);
+}
+Performing C++ SOURCE FILE Test HAVE_EGL succeeded with the following output:
+Change Dir: /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_357c5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_357c5.dir/build.make CMakeFiles/cmTC_357c5.dir/build
+gmake[1]: Entering directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_357c5.dir/src.cxx.o
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DHAVE_EGL  -DQT_QML_DEBUG  -std=gnu++17 -MD -MT CMakeFiles/cmTC_357c5.dir/src.cxx.o -MF CMakeFiles/cmTC_357c5.dir/src.cxx.o.d -o CMakeFiles/cmTC_357c5.dir/src.cxx.o -c /home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_357c5.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_357c5.dir/link.txt --verbose=1
+/home/runner/work/dev-env-debian/dev-env-debian/emsdk-cache/emsdk-main/upstream/emscripten/em++ -DQT_QML_DEBUG  @CMakeFiles/cmTC_357c5.dir/objects1.rsp -o cmTC_357c5.js 
+gmake[1]: Leaving directory '/home/runner/work/dev-env-debian/dev-env-debian/build-Qt6QuickApp-WebAssembly-Debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <EGL/egl.h>
+
+int main(int, char **) {
+    EGLint x = 0; EGLDisplay dpy = 0; EGLContext ctx = 0;
+    eglDestroyContext(dpy, ctx);
+}
