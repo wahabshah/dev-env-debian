@@ -26,16 +26,20 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'wasm_32'
-        
-    - name: Install Qt GCC
-      uses: jurplel/install-qt-action@v3
-      with:
-        aqtversion: '==2.1.*'
-        version: '6.4.2'
-        host: 'linux'
-        target: 'desktop'
-        arch: 'gcc_64'
+        dir: '${{ github.workspace }}/Qt/'
         tools: 'tools_cmake tools_ninja'
+        cache: 'true'
+        extra: '--autodesktop'
+        
+   # - name: Install Qt GCC
+   #   uses: jurplel/install-qt-action@v3
+   #   with:
+   #     aqtversion: '==2.1.*'
+   #     version: '6.4.2'
+   #     host: 'linux'
+   #     target: 'desktop'
+   #     arch: 'gcc_64'
+   #     tools: 'tools_cmake tools_ninja'
         
     - name: Build the Qt6QuickApp to the build_wasm folder
       run: |
