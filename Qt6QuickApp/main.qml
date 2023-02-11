@@ -6,4 +6,10 @@ Window {
     height: 480
     visible: true
     title: qsTr("Hello World")
+    Text {
+        text: "Hello World!"
+        font.family: "Helvetica"
+        font.pointSize: 24
+        color: "red"
+    }
 }
