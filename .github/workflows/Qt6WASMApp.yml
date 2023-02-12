@@ -1,4 +1,4 @@
-name: Deploy to Github pages
+name: Deploy to Github pages Qt6WASMApp
 
 on: workflow_dispatch
 
