@@ -744,7 +744,9 @@ make install
 
 ```sh
 python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1
-python3 -m aqt install-qt linux desktop 6.4.2 wasm_32 --outputdir $PWD/QtTest --autodesktop
+python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/QtTest --autodesktop
+python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/QtTest
+python3 -m aqt install-example linux desktop 6.4.2 --outputdir $PWD/QtTest
 ```
 
 ```sh
