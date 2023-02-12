@@ -23,7 +23,7 @@ jobs:
     
     # changes the base-tag in index.html from '/' to 'dev-env-debian' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to dev-env-debian
-      run: sed -i 's/<base href="\/" \/>/<base href="\/dev-env-debian\/" \/>/g' BlazorWASMApp/release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/dev-env-debian\/BlazorWASMApp\/" \/>/g' BlazorWASMApp/release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
@@ -33,7 +33,7 @@ jobs:
     - name: Add .nojekyll file
       run: touch BlazorWASMApp/release/wwwroot/.nojekyll
     
-    - name: uploade Artifacts 
+    - name: upload Artifacts 
       uses: actions/upload-artifact@v3
       with:
         name: BlazorWASMApp-release-wwwroot
