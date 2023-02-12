@@ -263,6 +263,8 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
   * `WebAssembly` is a QPA (Qt Platform Abstraction) plugin that lets you build Qt applications, which can be integrated into your web pages. 
     * It doesn’t require any client-side installations and reduces the server-side resource usage.
     * https://doc.qt.io/qt-6/wasm.html
+    * https://www.youtube.com/watch?v=A1Ka3AmNbuE
+      * ![image](https://user-images.githubusercontent.com/123810119/218302006-6d6147db-c3d2-43f0-822a-1da931f231f8.png)
     * Emscripten is a toolchain for compiling to WebAssembly. It lets you run Qt on the web at near-native speed without browser plugins.
     * http://qtandeverything.blogspot.com/2021/01/qt-6-webassembly.html
     * https://itnext.io/developing-web-apps-using-qml-and-qt-for-webassembly-aa84453f2f61
@@ -730,16 +732,22 @@ make install
   ```
 
 
+
+
+## Install Qt6 Webassembly + GCC
+
 * https://github.com/jurplel/install-qt-action
 * https://github.com/miurahr/aqtinstall
 * https://aqtinstall.readthedocs.io/en/v3.1.1/cli.html
 * https://ddalcino.github.io/aqt-list-server/
+* ![image](https://user-images.githubusercontent.com/123810119/218302800-e5873c63-5349-49b8-9461-dc35741947cd.png)
 
+```sh
 python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1
 python3 -m aqt install-qt linux desktop 6.4.2 wasm_32 --outputdir $PWD/QtTest --autodesktop
+```
 
-
-
+```sh
 PATH=/workspaces/dev-env-debian/emsdk/node/14.18.2_64bit/bin:/workspaces/dev-env-debian/emsdk/upstream/emscripten:/workspaces/dev-env-debian/emsdk:/home/gitpod/.local/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/gitpod/QtNew/Tools/Ninja
 QTDIR=/home/gitpod/QtNew/6.4.2/wasm_32
 
@@ -793,7 +801,7 @@ CMake Warning:
 
 -- Build files have been written to: /workspaces/dev-env-debian/build-Qt6QuickApp-WebAssembly_Qt_6_4_2-Debug
 Elapsed time: 00:07.
-
+```
 
 ```sh
 "/usr/bin/cmake" --build /workspaces/dev-env-debian/build-Qt6QuickApp-WebAssembly_Qt_6_4_2-Debug --target all
@@ -807,7 +815,7 @@ Elapsed time: 00:07.
 17:33:17: The process "/usr/bin/cmake" exited normally.
 17:33:17: Elapsed time: 00:04.
 ```
-
+```cmake
 ########################
 # EXTERNAL cache entries
 ########################
@@ -2355,7 +2363,17 @@ __pkg_config_arguments_PKG_EGL:INTERNAL=QUIET;egl
 __pkg_config_checked_PKG_EGL:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/home/gitpod/QtNew/6.4.2/wasm_32/lib/cmake/Qt6Qml
 prefix_result:INTERNAL=
+```
+## Github Actions
 
+* Github Runners
+ * Default packages :- https://github.com/actions/runner-images/blob/ubuntu22/20230206.1/images/linux/Ubuntu2204-Readme.md
+ * Add more packages from apt :- https://docs.github.com/en/actions/using-github-hosted-runners/customizing-github-hosted-runners
+
+## deploy-aspnet-blazor-webassembly-to-github-pages
+
+* https://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages
+* This was inspiration to deploy-qt6-webassembly-to-github-pages
 
 ## Create Github Pages Branch
 * https://gist.github.com/ramnathv/2227408
