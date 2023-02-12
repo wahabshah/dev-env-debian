@@ -19,11 +19,11 @@ jobs:
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
-      run: dotnet publish BlazorWASMApp/BlazorWASMApp.csproj -c Release -o release --nologo
+      run: dotnet publish BlazorWASMApp/BlazorWASMApp.csproj -c BlazorWASMApp/Release -o release --nologo
     
     # changes the base-tag in index.html from '/' to 'dev-env-debian' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to dev-env-debian
-      run: sed -i 's/<base href="\/" \/>/<base href="\/dev-env-debian\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/dev-env-debian\/" \/>/g' BlazorWASMApp/release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
