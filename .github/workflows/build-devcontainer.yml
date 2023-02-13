@@ -11,4 +11,4 @@ jobs:
     # uses GitHub's checkout action to checkout code form the current branch
       - uses: actions/checkout@v3
       - name: Build docker images
-        run: docker build -t local .devcontainer/Dockerfile
+        run: docker build -t local -f .devcontainer/Dockerfile
