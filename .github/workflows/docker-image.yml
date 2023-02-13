@@ -9,9 +9,8 @@
 
 name: Create and publish a Docker image
 
-on:
-  push:
-    branches: ['release']
+# Run workflow manually
+on: workflow_dispatch
 
 env:
   REGISTRY: ghcr.io
