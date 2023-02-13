@@ -55,4 +55,3 @@ jobs:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           push: always
-          runCmd: qmake
