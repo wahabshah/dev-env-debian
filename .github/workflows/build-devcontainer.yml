@@ -1,0 +1,14 @@
+name: Build DevContainer
+
+# Run workflow manually
+on: workflow_dispatch
+
+jobs:
+  deploy-to-github-pages:
+    # use ubuntu-latest image to run steps on
+    runs-on: ubuntu-latest
+    steps:
+    # uses GitHub's checkout action to checkout code form the current branch
+      uses: actions/checkout@v3
+    - name: Build docker images
+      run: docker build -t local .devcontainer/Dockerfile
