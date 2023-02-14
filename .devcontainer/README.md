@@ -270,6 +270,7 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
     * https://itnext.io/developing-web-apps-using-qml-and-qt-for-webassembly-aa84453f2f61
     * https://emscripten.org/docs/getting_started/downloads.html
       ```sh
+      cd $HOME
       # Get the emsdk repo
       git clone https://github.com/emscripten-core/emsdk.git
 
@@ -302,6 +303,14 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
       cmake --build ../qt-everywhere-src-6.4.2 -t qtbase -t qtdeclarative -t qtimageformats -t qtsvg --parallel
       ```
       ```sh
+      cd $HOME
+      python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1
+      python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64 -m qtvirtualkeyboard --outputdir $HOME/Qt 
+      python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $HOME/Qt
+      python3 -m aqt install-example linux         6.4.2 --outputdir $HOME/Qt
+      python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $HOME/Qt
+      ```
+      ```sh
       # Building Applications on the Command Line: Qt for WebAssembly supports building applications using qmake and make, or CMake with ninja or make.
       cd /workspaces/dev-env-debian/Qt6QuickApp
       mkdir build_wasm && cd build_wasm
@@ -309,13 +318,23 @@ wget https://download.qt.io/archive/online_installers/4.5/qt-unified-linux-x64-4
       # /workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/bin/qt-cmake ..
       # /workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/lib/cmake/Qt6/FindWrapZLIB.cmake
       # list(APPEND CMAKE_MODULE_PATH "/workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/cmake") 
+      cd /workspaces/dev-env-debian
+      /usr/bin/cmake \
+           --debug-output \
+           -S Qt6QuickApp  \
+           -B build-Qt6QuickApp-WebAssembly-Debug \
+           -DCMAKE_BUILD_TYPE:STRING=Debug \
+           -DCMAKE_PREFIX_PATH:PATH=$HOME/Qt/6.4.2/wasm_32 \
+           -DCMAKE_C_COMPILER:FILEPATH=$HOME/emsdk/upstream/emscripten/emcc \
+           -DCMAKE_CXX_COMPILER:FILEPATH=$HOME/emsdk/upstream/emscripten/em++  \
+           -DCMAKE_TOOLCHAIN_FILE:FILEPATH=$HOME/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake \
+           -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG \
+           -DQT_HOST_PATH:PATH=$HOME/Qt/6.4.2/gcc_64
 
-      /usr/bin/cmake -S /workspaces/dev-env-debian/Qt6QuickApp -B /workspaces/dev-env-debian/build-Qt6QuickApp-WebAssembly_Qt_6_4_2-Debug -DCMAKE_GENERATOR:STRING=Ninja -DCMAKE_BUILD_TYPE:STRING=Debug -DQT_QMAKE_EXECUTABLE:FILEPATH=/home/gitpod/QtNew/6.4.2/wasm_32/bin/qmake -DCMAKE_PREFIX_PATH:PATH=/home/gitpod/QtNew/6.4.2/wasm_32 -DCMAKE_C_COMPILER:FILEPATH=/workspaces/dev-env-debian/emsdk/upstream/emscripten/emcc -DCMAKE_CXX_COMPILER:FILEPATH=/workspaces/dev-env-debian/emsdk/upstream/emscripten/em++ -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/home/gitpod/QtNew/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake -DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG in /workspaces/dev-env-debian/build-Qt6QuickApp-WebAssembly_Qt_6_4_2-Debug.
-
-      cmake --build .
+      /usr/bin/cmake --build build-Qt6QuickApp-WebAssembly-Debug --target all
       
       # Running Applications
-      $EMSDK/upstream/emscripten/emrun --browser=chrome Qt6QuickApp.html
+      $EMSDK/upstream/emscripten/emrun --browser=chrome build-Qt6QuickApp-WebAssembly-Debug/Qt6QuickApp.html
       ```
 ## Gammaray
 
@@ -744,9 +763,10 @@ make install
 
 ```sh
 python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1
-python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/QtTest --autodesktop
-python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/QtTest
-python3 -m aqt install-example linux desktop 6.4.2 --outputdir $PWD/QtTest
+python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64 -m qtvirtualkeyboard --outputdir $PWD/Qt 
+python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt
+python3 -m aqt install-example linux desktop 6.4.2 --outputdir $PWD/Qt
+python3 -m aqt install-tool    linux tools_qtcreator qt.tools.qtcreator --outputdir $PWD/Qt
 ```
 
 ```sh
