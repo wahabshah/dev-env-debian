@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorCmaketools>
+<!-- Written by sdktool , 2023-02-16T20:14:01. -->
+<qtcreator>
+ <data>
+  <variable>CMakeTools.0</variable>
+  <valuemap type="QVariantMap">
+   <value type="bool" key="Autodetect">true</value>
+   <value type="QString" key="Binary">/home/gitpod/QtNew/Tools/CMake/bin/cmake</value>
+   <value type="QString" key="DisplayName">CMake 3.24.2 (Qt)</value>
+   <value type="QString" key="Id">qt.tools.cmake</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>CMakeTools.Count</variable>
+  <value type="int">1</value>
+ </data>
+ <data>
+  <variable>Version</variable>
+  <value type="int">1</value>
+ </data>
+</qtcreator>

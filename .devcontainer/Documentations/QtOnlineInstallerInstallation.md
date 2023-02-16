@@ -124,12 +124,20 @@ Downloading archive "6.4.2-0-202212131055qttools-Linux-openSUSE_15_4-GCC-Linux-W
 Downloading archive "6.4.2-0-202212131055qttools-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z" for component WebAssembly (%WEBASSEMBLY_THREADING%).
 Downloading archive "6.4.2-0-202212131055qttranslations-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z.sha1" for component WebAssembly (%WEBASSEMBLY_THREADING%).
 Downloading archive "6.4.2-0-202212131055qttranslations-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z" for component WebAssembly (%WEBASSEMBLY_THREADING%).
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-documentation.7z.sha1" for component Documentation for Qt 6.4.2 GPLv3 components (QtVirtualKeyboard).
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-documentation.7z" for component Documentation for Qt 6.4.2 GPLv3 components (QtVirtualKeyboard).
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-examples-6.4.2.7z.sha1" for component Examples for Qt 6.4.2 GPLv3 components (QtVirtualKeyboard).
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-examples-6.4.2.7z" for component Examples for Qt 6.4.2 GPLv3 components (QtVirtualKeyboard).
 Downloading archive "9.0.1-0-202212140414qtcreator.7z.sha1" for component Qt Creator 9.0.1.
 Downloading archive "9.0.1-0-202212140414qtcreator.7z" for component Qt Creator 9.0.1.
 Downloading archive "3.24.2-202210260922linux64_x86_cmake_tools.7z.sha1" for component CMake 3.24.2.
 Downloading archive "3.24.2-202210260922linux64_x86_cmake_tools.7z" for component CMake 3.24.2.
 Downloading archive "1.10.2-202108061017linux64_ninja.7z.sha1" for component Ninja 1.10.2.
 Downloading archive "1.10.2-202108061017linux64_ninja.7z" for component Ninja 1.10.2.
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-Linux-RHEL_8_4-GCC-Linux-RHEL_8_4-X86_64.7z.sha1" for component Qt Virtual Keyboard for gcc 64-bit.
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-Linux-RHEL_8_4-GCC-Linux-RHEL_8_4-X86_64.7z" for component Qt Virtual Keyboard for gcc 64-bit.
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z.sha1" for component Qt Virtual Keyboard for WebAssembly.
+Downloading archive "6.4.2-0-202212131055qtvirtualkeyboard-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z" for component Qt Virtual Keyboard for WebAssembly.
 
 Preparing to unpack components...
 
@@ -153,7 +161,10 @@ Extracting "6.4.2-0-202212131055qtbase-examples-6.4.2.7z"
 Extracting "6.4.2-0-202212131055qtgui-documentation.7z"
 Extracting "6.4.2-0-202212131055qtdesigner-documentation.7z"
 Extracting "6.4.2-0-202212131055qtdoc-examples-6.4.2.7z"
+Extracting "6.4.2-0-202212131055qtvirtualkeyboard-Linux-RHEL_8_4-GCC-Linux-RHEL_8_4-X86_64.7z"
 Extracting "9.0.1-0-202212150944qtcreator_sdktool.7z"
+Extracting "6.4.2-0-202212131055qtvirtualkeyboard-documentation.7z"
+Extracting "6.4.2-0-202212131055qtvirtualkeyboard-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z"
 Extracting "6.4.2-0-202212131055qttranslations-Linux-openSUSE_15_4-GCC-Linux-WebAssembly-X86_64.7z"
 Extracting "6.4.2-0-202212131055qttranslations-Linux-RHEL_8_4-GCC-Linux-RHEL_8_4-X86_64.7z"
 Extracting "6.4.2-0-202212131055qtqml-documentation.7z"
@@ -196,6 +207,7 @@ Extracting "1.0.0ThirdPartySoftware_Listing.7z"
 Extracting "4.5.1-0-202212071053installer-resource.7z"
 Extracting "1.0.0fdl_license.7z"
 Extracting "4.5.1-0-202212071053QtIcon.7z"
+Extracting "6.4.2-0-202212131055qtvirtualkeyboard-examples-6.4.2.7z"
 Extracting "4.5.1-0-202212071053installer-changelog.7z"
 Extracting "6.4.2-0-202212131055sha1s.txt.7z"
 Done
@@ -224,36 +236,42 @@ Done
 
 Installing component Qt Creator 9.0.1
 /home/gitpod/.local/share/icons/hicolor
-/home/gitpod/.local/share/icons/hicolor/24x24
-/home/gitpod/.local/share/icons/hicolor/24x24/apps
-/home/gitpod/.local/share/icons/hicolor/24x24/apps/QtProject-qtcreator.png
-/home/gitpod/.local/share/icons/hicolor/48x48
-/home/gitpod/.local/share/icons/hicolor/48x48/apps
-/home/gitpod/.local/share/icons/hicolor/48x48/apps/QtProject-qtcreator.png
-/home/gitpod/.local/share/icons/hicolor/16x16
-/home/gitpod/.local/share/icons/hicolor/16x16/apps
-/home/gitpod/.local/share/icons/hicolor/16x16/apps/QtProject-qtcreator.png
 /home/gitpod/.local/share/icons/hicolor/32x32
 /home/gitpod/.local/share/icons/hicolor/32x32/apps
 /home/gitpod/.local/share/icons/hicolor/32x32/apps/QtProject-qtcreator.png
+/home/gitpod/.local/share/icons/hicolor/128x128
+/home/gitpod/.local/share/icons/hicolor/128x128/apps
+/home/gitpod/.local/share/icons/hicolor/128x128/apps/QtProject-qtcreator.png
+/home/gitpod/.local/share/icons/hicolor/48x48
+/home/gitpod/.local/share/icons/hicolor/48x48/apps
+/home/gitpod/.local/share/icons/hicolor/48x48/apps/QtProject-qtcreator.png
+/home/gitpod/.local/share/icons/hicolor/512x512
+/home/gitpod/.local/share/icons/hicolor/512x512/apps
+/home/gitpod/.local/share/icons/hicolor/512x512/apps/QtProject-qtcreator.png
+/home/gitpod/.local/share/icons/hicolor/24x24
+/home/gitpod/.local/share/icons/hicolor/24x24/apps
+/home/gitpod/.local/share/icons/hicolor/24x24/apps/QtProject-qtcreator.png
+/home/gitpod/.local/share/icons/hicolor/16x16
+/home/gitpod/.local/share/icons/hicolor/16x16/apps
+/home/gitpod/.local/share/icons/hicolor/16x16/apps/QtProject-qtcreator.png
 /home/gitpod/.local/share/icons/hicolor/256x256
 /home/gitpod/.local/share/icons/hicolor/256x256/apps
 /home/gitpod/.local/share/icons/hicolor/256x256/apps/QtProject-qtcreator.png
 /home/gitpod/.local/share/icons/hicolor/64x64
 /home/gitpod/.local/share/icons/hicolor/64x64/apps
 /home/gitpod/.local/share/icons/hicolor/64x64/apps/QtProject-qtcreator.png
-/home/gitpod/.local/share/icons/hicolor/512x512
-/home/gitpod/.local/share/icons/hicolor/512x512/apps
-/home/gitpod/.local/share/icons/hicolor/512x512/apps/QtProject-qtcreator.png
-/home/gitpod/.local/share/icons/hicolor/128x128
-/home/gitpod/.local/share/icons/hicolor/128x128/apps
-/home/gitpod/.local/share/icons/hicolor/128x128/apps/QtProject-qtcreator.png
 Done
 
 Installing component CMake 3.24.2
 Done
 
 Installing component Ninja 1.10.2
+Done
+
+Installing component Qt Virtual Keyboard for gcc 64-bit
+Done
+
+Installing component Qt Virtual Keyboard for WebAssembly
 Done
 Writing maintenance tool.
 

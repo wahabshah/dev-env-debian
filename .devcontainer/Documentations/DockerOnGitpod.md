@@ -102,3 +102,10 @@ gitpod /workspace/template-x11-vnc (main) $ sudo tree /workspace/.docker-root
 
 40 directories, 8 files
 ```
+
+
+```sh
+$ sudo ./.devcontainer/dockerd-install-script.sh 
+$ sudo /usr/local/share/docker-init.sh
+$ sudo docker run hello-world
+```
