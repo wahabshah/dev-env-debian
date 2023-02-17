@@ -888,6 +888,10 @@ python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt
 python3 -m aqt install-example linux 6.4.2 --outputdir $PWD/Qt
 python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64  -m qtvirtualkeyboard --outputdir $PWD/Qt
 python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt
+
+p7zip-full
+wget https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/sdktool/qt.tools.qtcreator/9.0.1-0-202212150944qtcreator_sdktool.7z
+7za e -y 9.0.1-0-202212150944qtcreator_sdktool.7z -o/home/gitpod/Test1
 ```
 
 ```sh

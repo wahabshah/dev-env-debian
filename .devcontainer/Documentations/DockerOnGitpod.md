@@ -108,4 +108,8 @@ gitpod /workspace/template-x11-vnc (main) $ sudo tree /workspace/.docker-root
 $ sudo ./.devcontainer/dockerd-install-script.sh 
 $ sudo /usr/local/share/docker-init.sh
 $ sudo docker run hello-world
+$ sudo usermod -aG docker gitpod
+$ newgrp docker
+$ docker run hello-world
+$ sudo chown $(whoami):$(whoami) /var/run/docker.sock
 ```
