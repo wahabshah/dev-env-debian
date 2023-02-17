@@ -1,3 +1,12 @@
+* https://github.com/gitpod-io/gitpod/pull/4018 => 
+```sh
+gitpod /workspace $ /.supervisor/supervisor terminal list
+ALIAS                                PID COMMAND            ANNOTATIONS
+c67b36aa-2c81-43f1-ad8d-a05209b5316b 94  /bin/bash          
+2afccc08-ad74-4d3e-8788-41d1e0c8a162 666 /usr/bin/docker-up gitpod.supervisor=true
+```
+* http://0pointer.de/blog/projects/socket-activation.html => 
+
 ```sh
 root        1044  0.0  0.1 2416648 77216 pts/1   Ssl+ 02:31   0:00 /usr/bin/dockerd --data-root=/workspace/.docker-root --add-runtime gitpod=/usr/bin/runc-facade --default-runtime gitpod --mtu=1440 --network-control-plane-mtu=1440 -H fd://
 root        1072  0.2  0.0 2095328 52472 ?       Ssl  02:31   0:01 containerd --config /var/run/docker/containerd/containerd.toml --log-level info
