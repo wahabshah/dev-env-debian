@@ -247,24 +247,25 @@ RUN bash \
         echo 'fi'; } >> /home/gitpod/.bashrc.d/110-dotnet
 RUN chmod +x /home/gitpod/.bashrc.d/110-dotnet
 
-#######Qt6-Boost1.81##########
-
-USER root
-
-RUN install-packages \
-    build-essential cmake libgl1-mesa-dev qtcreator qt6-base-dev qt6-declarative-dev \
-    qml6-module-qt-labs-animation qml6-module-qt-labs-folderlistmodel \
-    qml6-module-qt-labs-platform qml6-module-qt-labs-qmlmodels \
-    qml6-module-qt-labs-settings qml6-module-qt-labs-sharedimage \
-    qml6-module-qt-labs-wavefrontmesh qml6-module-qtcore qml6-module-qtqml \
-    qml6-module-qtqml-models qml6-module-qtqml-workerscript qml6-module-qtqml-xmllistmodel \
-    qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-dialogs qml6-module-qtquick-layouts \
-    qml6-module-qtquick-localstorage qml6-module-qtquick-nativestyle qml6-module-qtquick-particles \
-    qml6-module-qtquick-shapes qml6-module-qtquick-templates qml6-module-qtquick-tooling \
-    qml6-module-qtquick-window qml6-module-qttest libxcb-xinerama0 \
-    pkg-config liburing-dev gdb tree 
-RUN echo "deb https://deb.debian.org/debian experimental main" > /etc/apt/sources.list.d/debian-experimental.list \
-    && install-packages -t experimental libboost-dev
-
+#######EssentialTools-Boost1.81-Qt6-EMSDK##########
 
 USER gitpod
+
+RUN sudo install-packages \
+    build-essential cmake libgl1-mesa-dev  libxcb-xinerama0 \
+    pkg-config liburing-dev gdb tree
+RUN sudo install-packages libboost1.81-dev
+RUN cd $HOME                                                                                                         \
+    && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                       \
+    && python3 -m aqt install-tool    linux desktop tools_maintenance qt.tools.maintenance --outputdir $PWD/Qt       \
+    && python3 -m aqt install-tool    linux desktop tools_qtcreator_gui qt.tools.qtcreator_gui --outputdir $PWD/Qt   \
+    && python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt                                                \
+    && python3 -m aqt install-example linux 6.4.2 --outputdir $PWD/Qt                                                \
+    && python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64  -m qtvirtualkeyboard --outputdir $PWD/Qt           \
+    && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt
+RUN cd $HOME                                                             \
+    && git clone https://github.com/emscripten-core/emsdk.git            \
+    && cd emsdk                                                          \
+    && ./emsdk install 3.1.14                                            \
+    && ./emsdk activate 3.1.14                                           \
+    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bash_profile
