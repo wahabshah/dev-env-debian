@@ -1,4 +1,4 @@
-FROM buildpack-deps:bookworm
+FROM buildpack-deps:${VARIANT:bookworm}
 
 COPY install-packages upgrade-packages /usr/bin/
 
@@ -132,7 +132,28 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/"$(lsb_release -cs)".gpg
 
 USER gitpod
 
-# lang-c
+###############C/C++##########
+USER root
+
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+
+# when bookworm is released then change to http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15
+RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/llvm-archive-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/llvm-archive-keyring.gpg] http://apt.llvm.org/unstable/ \
+    llvm-toolchain-15 main" | sudo tee /etc/apt/sources.list.d/llvm.list > /dev/null \
+    && apt update \
+    && sudo install-packages \
+        clang \
+        clangd \
+        clang-format \
+        clang-tidy \
+        gdb \
+        lld
+
+USER gitpod
+
 # lang-clojure
 # lang-go:1.19.5
 # lang-java:11
