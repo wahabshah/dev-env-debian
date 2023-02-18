@@ -251,9 +251,12 @@ RUN chmod +x /home/gitpod/.bashrc.d/110-dotnet
 
 USER gitpod
 
-RUN sudo install-packages \
-    build-essential cmake libgl1-mesa-dev  libxcb-xinerama0 \
-    pkg-config liburing-dev gdb tree
+RUN sudo install-packages                                                                                             \
+    build-essential libgl1-mesa-dev libfontconfig1-dev libfreetype6-dev libx11-dev libx11-xcb-dev libxext-dev         \
+    libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev          \
+    libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev          \
+    libxcb-render-util0-dev libxcb-util-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
+    cmake pkg-config liburing-dev gdb tree
 RUN sudo install-packages libboost1.81-dev
 RUN cd $HOME                                                                                                         \
     && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                       \
@@ -268,4 +271,4 @@ RUN cd $HOME                                                             \
     && cd emsdk                                                          \
     && ./emsdk install 3.1.14                                            \
     && ./emsdk activate 3.1.14                                           \
-    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bash_profile
+    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
