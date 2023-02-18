@@ -1,4 +1,4 @@
-FROM buildpack-deps:${VARIANT:bookworm}
+FROM buildpack-deps:${VARIANT:-bookworm}
 
 COPY install-packages upgrade-packages /usr/bin/
 
