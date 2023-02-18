@@ -354,7 +354,7 @@ RUN cd $HOME                                                                    
     && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt                                                                \
     && sed -i 's/Exec=qtcreator/Exec=\/home\/gitpod\/Qt\/Tools\/QtCreator\/bin\/qtcreator/g' $HOME/Qt/Tools/QtCreator/share/applications/org.qt-project.qtcreator.desktop \
     && cp -r $PWD/Qt/Tools/QtCreator/share/* $HOME/.local/share/
-COPY --chown=gitpod:gitpod .devcontainer/Qt_DotConfig $HOME/.config/
+COPY --chown=gitpod:gitpod Qt_DotConfig $HOME/.config/
 RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
