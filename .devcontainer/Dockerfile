@@ -45,7 +45,7 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
     # passwordless sudo for users in the 'sudo' group
     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers \
     # To emulate the workspace-session behavior within dazzle build env
-    && mkdir /workspace && chown -hR gitpod:gitpod /workspace
+    && mkdir /workspaces && chown -hR gitpod:gitpod /workspaces
 
 ENV HOME=/home/gitpod
 WORKDIR $HOME
@@ -192,7 +192,7 @@ RUN curl -fsSL https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz | tar x
     go install -v golang.org/x/tools/gopls@latest && \
     go install -v honnef.co/go/tools/cmd/staticcheck@latest && \
     sudo rm -rf $GOPATH/src $GOPATH/pkg $HOME/.cache/go $HOME/.cache/go-build && \
-    printf '%s\n' 'export GOPATH=/workspace/go' \
+    printf '%s\n' 'export GOPATH=/workspaces/go' \
                   'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
 ##########java:11##########
 ARG JAVA_VERSION=11.0.17.fx-zulu
@@ -214,11 +214,11 @@ RUN curl -fsSL "https://get.sdkman.io" | bash \
              && sdk flush archives \
              && sdk flush temp \
              && mkdir /home/gitpod/.m2 \
-             && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml \
+             && printf '<settings>\n  <localRepository>/workspaces/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml \
              && echo 'export SDKMAN_DIR=\"/home/gitpod/.sdkman\"' >> /home/gitpod/.bashrc.d/99-java \
              && echo '[[ -s \"/home/gitpod/.sdkman/bin/sdkman-init.sh\" ]] && source \"/home/gitpod/.sdkman/bin/sdkman-init.sh\"' >> /home/gitpod/.bashrc.d/99-java"
 # above, we are adding the sdkman init to .bashrc (executing sdkman-init.sh does that), because one is executed on interactive shells, the other for non-interactive shells (e.g. plugin-host)
-ENV GRADLE_USER_HOME=/workspace/.gradle/
+ENV GRADLE_USER_HOME=/workspaces/.gradle/
 
 
 ###############Nodejs##########
