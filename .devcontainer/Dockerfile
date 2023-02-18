@@ -154,10 +154,71 @@ RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | sudo gpg --dearmor -
 
 USER gitpod
 
-# lang-clojure
-# lang-go:1.19.5
-# lang-java:11
+###############CLOJURE##########
+USER root
 
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+RUN install-packages rlwrap
+RUN curl https://download.clojure.org/install/linux-install-1.10.3.1029.sh -o /tmp/linux-install-1.10.3.1029.sh \
+    && chmod +x /tmp/linux-install-1.10.3.1029.sh \
+    && /tmp/linux-install-1.10.3.1029.sh \
+    && rm /tmp/linux-install-1.10.3.1029.sh
+
+USER gitpod
+
+##############go:1.19.5##########
+ARG GO_VERSION=1.19.5
+
+USER gitpod
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+ENV GO_VERSION=${GO_VERSION}
+ENV GOPATH=$HOME/go-packages
+ENV GOROOT=$HOME/go
+ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+RUN curl -fsSL https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz | tar xzs && \
+# install VS Code Go tools for use with gopls as per https://github.com/golang/vscode-go/blob/master/docs/tools.md
+# also https://github.com/golang/vscode-go/blob/27bbf42a1523cadb19fad21e0f9d7c316b625684/src/goTools.ts#L139
+    go install -v github.com/uudashr/gopkgs/cmd/gopkgs@v2 && \
+    go install -v github.com/ramya-rao-a/go-outline@latest && \
+    go install -v github.com/cweill/gotests/gotests@latest && \
+    go install -v github.com/fatih/gomodifytags@latest && \
+    go install -v github.com/josharian/impl@latest && \
+    go install -v github.com/haya14busa/goplay/cmd/goplay@latest && \
+    go install -v github.com/go-delve/delve/cmd/dlv@latest && \
+    go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest && \
+    go install -v golang.org/x/tools/gopls@latest && \
+    go install -v honnef.co/go/tools/cmd/staticcheck@latest && \
+    sudo rm -rf $GOPATH/src $GOPATH/pkg $HOME/.cache/go $HOME/.cache/go-build && \
+    printf '%s\n' 'export GOPATH=/workspace/go' \
+                  'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
+##########java:11##########
+ARG JAVA_VERSION=11
+
+USER gitpod
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+
+RUN curl -fsSL "https://get.sdkman.io" | bash \
+ && bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
+             && sed -i 's/sdkman_selfupdate_enable=true/sdkman_selfupdate_enable=false/g' /home/gitpod/.sdkman/etc/config \
+             && sed -i 's/sdkman_selfupdate_feature=true/sdkman_selfupdate_feature=false/g' /home/gitpod/.sdkman/etc/config \
+             && sdk install java ${JAVA_VERSION} \
+             && sdk install java 17.0.5.fx-zulu \
+             && sdk default java ${JAVA_VERSION} \
+             && sdk install gradle \
+             && sdk install maven \
+             && sdk flush archives \
+             && sdk flush temp \
+             && mkdir /home/gitpod/.m2 \
+             && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml \
+             && echo 'export SDKMAN_DIR=\"/home/gitpod/.sdkman\"' >> /home/gitpod/.bashrc.d/99-java \
+             && echo '[[ -s \"/home/gitpod/.sdkman/bin/sdkman-init.sh\" ]] && source \"/home/gitpod/.sdkman/bin/sdkman-init.sh\"' >> /home/gitpod/.bashrc.d/99-java"
+# above, we are adding the sdkman init to .bashrc (executing sdkman-init.sh does that), because one is executed on interactive shells, the other for non-interactive shells (e.g. plugin-host)
+ENV GRADLE_USER_HOME=/workspace/.gradle/
 
 
 ###############Nodejs##########
