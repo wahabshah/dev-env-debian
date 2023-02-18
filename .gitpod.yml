@@ -1,4 +1,5 @@
-workspaceLocation: "."
+workspaceLocation: "/workspaces/dev-env-debian"
+checkoutLocation : "/workspaces"
 image:
   file: .devcontainer/Dockerfile
   context: .devcontainer
