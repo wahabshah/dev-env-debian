@@ -320,6 +320,7 @@ chmod +x qt-unified-linux-x64-4.5.1-online.run
       # /workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/lib/cmake/Qt6/FindWrapZLIB.cmake
       # list(APPEND CMAKE_MODULE_PATH "/workspaces/dev-env-debian/qt-everywhere-src-6.4.2/qtbase/cmake") 
       cd /workspaces/dev-env-debian
+      source /home/gitpod/emsdk/emsdk_env.sh
       /usr/bin/cmake \
            --debug-output \
            -S Qt6QuickApp  \

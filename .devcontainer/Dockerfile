@@ -344,16 +344,17 @@ RUN sudo install-packages                                                       
     libxcb-render-util0-dev libxcb-util-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
     cmake ninja-build pkg-config liburing-dev gdb tree
 RUN sudo install-packages libboost1.81-dev
-RUN cd $HOME                                                                                                         \
-    && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                       \
-    && python3 -m aqt install-tool    linux desktop tools_maintenance qt.tools.maintenance --outputdir $PWD/Qt       \
-    && python3 -m aqt install-tool    linux desktop tools_qtcreator_gui qt.tools.qtcreator_gui --outputdir $PWD/Qt   \
-    && python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt                                                \
-    && python3 -m aqt install-example linux 6.4.2 --outputdir $PWD/Qt                                                \
-    && python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64  -m qtvirtualkeyboard --outputdir $PWD/Qt           \
-    && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt           \
+RUN cd $HOME                                                                                                                                                              \
+    && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \
+    && python3 -m aqt install-tool    linux desktop tools_maintenance qt.tools.maintenance --outputdir $PWD/Qt                                                            \
+    && python3 -m aqt install-tool    linux desktop tools_qtcreator_gui qt.tools.qtcreator_gui --outputdir $PWD/Qt                                                        \
+    && python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt                                                                                                     \
+    && python3 -m aqt install-example linux 6.4.2 --outputdir $PWD/Qt                                                                                                     \
+    && python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64  -m qtvirtualkeyboard --outputdir $PWD/Qt                                                                \
+    && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard --outputdir $PWD/Qt                                                                \
+    && sed -i 's/Exec=qtcreator/Exec=\/home\/gitpod\/Qt\/Tools\/QtCreator\/bin\/qtcreator/g' $HOME/Qt/Tools/QtCreator/share/applications/org.qt-project.qtcreator.desktop \
     && cp -r $PWD/Qt/Tools/QtCreator/share/* $HOME/.local/share/
-    # COPY .devcontainer/Qt_DotConfig $HOME/.config/
+COPY --chown=gitpod:gitpod .devcontainer/Qt_DotConfig $HOME/.config/
 RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
