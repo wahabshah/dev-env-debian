@@ -295,5 +295,5 @@ RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
     && ./emsdk install 3.1.14                                            \
-    && ./emsdk activate 3.1.14                                           \
-    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
+    && ./emsdk activate 3.1.14
+    # echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
