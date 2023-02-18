@@ -195,7 +195,7 @@ RUN curl -fsSL https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz | tar x
     printf '%s\n' 'export GOPATH=/workspace/go' \
                   'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
 ##########java:11##########
-ARG JAVA_VERSION=11
+ARG JAVA_VERSION=11.0.17.fx-zulu
 
 USER gitpod
 
