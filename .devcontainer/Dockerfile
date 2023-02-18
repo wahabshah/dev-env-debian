@@ -157,7 +157,32 @@ USER gitpod
 # lang-clojure
 # lang-go:1.19.5
 # lang-java:11
-# lang-node:16
+
+
+
+###############Nodejs##########
+ARG NODE_VERSION=16.19.0
+
+USER gitpod
+
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
+ENV NODE_VERSION=${NODE_VERSION}
+
+ENV PNPM_HOME=/home/gitpod/.pnpm
+ENV PATH=/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:/home/gitpod/.yarn/bin:${PNPM_HOME}:$PATH
+
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | PROFILE=/dev/null bash \
+    && bash -c ". .nvm/nvm.sh \
+        && nvm install v${NODE_VERSION} \
+        && nvm alias default v${NODE_VERSION} \
+        && npm install -g typescript yarn pnpm node-gyp" \
+    && echo ". ~/.nvm/nvm-lazy.sh"  >> /home/gitpod/.bashrc.d/50-node
+# above, we are adding the lazy nvm init to .bashrc, because one is executed on interactive shells, the other for non-interactive shells (e.g. plugin-host)
+COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
+
+
+
 # lang-python:3.8
 # lang-ruby:3.1
 # lang-rust
@@ -256,7 +281,7 @@ RUN sudo install-packages                                                       
     libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev          \
     libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev          \
     libxcb-render-util0-dev libxcb-util-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
-    cmake pkg-config liburing-dev gdb tree
+    cmake ninja-build pkg-config liburing-dev gdb tree
 RUN sudo install-packages libboost1.81-dev
 RUN cd $HOME                                                                                                         \
     && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                       \
