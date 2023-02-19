@@ -760,7 +760,17 @@ make install
 * https://github.com/jurplel/install-qt-action
 * https://github.com/miurahr/aqtinstall
 * https://aqtinstall.readthedocs.io/en/v3.1.1/cli.html
+* https://github.com/miurahr/aqtinstall/issues/383
+  * Using :- https://download.qt.io/online/qtsdkrepository
+  * Better to use for tools :- https://download.qt.io/official_releases/
 * https://ddalcino.github.io/aqt-list-server/
+* QtCreator 9.0.1
+  ```sh
+  sudo apt install p7zip-full
+  wget https://download.qt.io/official_releases/qtcreator/9.0/9.0.1/installer_source/linux_x64/qtcreator.7z
+  mkdir /home/gitpod/Qt/Tools/QtCreator
+  (cd /home/gitpod/Qt/Tools/QtCreator && 7za x ../qtcreator.7z)
+  ```
 * ![image](https://user-images.githubusercontent.com/123810119/218302800-e5873c63-5349-49b8-9461-dc35741947cd.png)
 
 ```sh
