@@ -387,32 +387,39 @@ make install
 
 * https://github.com/qt/qt5/tree/6.4.2
   * qt3d
+    * Qt 3D
   * qt5compat
+    * Qt 5 Core Compat module
   * qtactiveqt
+    * Active Qt
   * qtbase
-    * Qt 6 concurrent module
+    * Qt 6 Concurrent module
     * Qt 6 core module
     * Qt 6 D-Bus module
     * Qt 6 GUI module
-    * Qt 6 network module
+    * Qt 6 Network module
     * Qt 6 OpenGL modul
     * Qt 6 OpenGL widgets module
     * Qt 6 print support module
     * Qt 6 SQL module
-    * Qt 6 test module
-    * Qt 6 widgets module
+    * Qt 6 Test module
+    * Qt 6 Widgets module
     * Qt 6 XML module
   * qtcanvas3d
   * qtcharts
+    * Qt Charts module 
   * qtcoap
+    * Qt CoAP module
   * qtconnectivity
+    * Qt 6 Connectivity Bluetooth library
+    * Qt 6 Connectivity NFC library
   * qtdatavis3d
   * qtdeclarative
     * Qt 6 QML module
     * Qt 6 Animation QML module
     * Qt 6 FolderListModel QML module
     * Qt 6 Platform QML module
-    * Qt 6 QML Models QML modul
+    * Qt 6 QML Models QML module
     * Qt 6 Settings QML module
     * Qt 6 Shared Image Provider QML module
     * Qt 6 WavefrontMesh QML module
@@ -438,13 +445,16 @@ make install
   * qtgamepad
   * qthttpserver
   * qtimageformats
+    * Qt Image Formats 
   * qtlanguageserver
   * qtlocation
   * qtlottie
   * qtmqtt
   * qtmultimedia
+    * Qt Multimedia 
   * qtnetworkauth
   * qtopcua
+    * Qt OPC UA
   * qtpim
   * qtpositioning
   * qtqa
