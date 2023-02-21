@@ -449,8 +449,10 @@ make install
   * qtpositioning
   * qtqa
   * qtquick3d
+    * Qt Quick 3D 
   * qtquick3dphysics
   * qtquicktimeline
+    * QtQuickTimeline  
   * qtremoteobjects
   * qtrepotools
   * qtscxml
