@@ -269,6 +269,8 @@ chmod +x qt-unified-linux-x64-4.5.1-online.run
     * Emscripten is a toolchain for compiling to WebAssembly. It lets you run Qt on the web at near-native speed without browser plugins.
     * http://qtandeverything.blogspot.com/2021/01/qt-6-webassembly.html
     * https://itnext.io/developing-web-apps-using-qml-and-qt-for-webassembly-aa84453f2f61
+    * https://www.qt.io/blog/does-webassembly-matter-for-embedded-systems-makers
+    * https://www.qt.io/blog/the-future-of-headless-embedded-devices
     * https://emscripten.org/docs/getting_started/downloads.html
       ```sh
       cd $HOME
