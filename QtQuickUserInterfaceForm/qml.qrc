@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>mainwindow.ui.qml</file>
+        <file>qml/ProgressBar.ui.qml</file>
+        <file>qml/MyProgressBar.qml</file>
+        <file>qml/built-with-Qt_Large.png</file>
+    </qresource>
+</RCC>
