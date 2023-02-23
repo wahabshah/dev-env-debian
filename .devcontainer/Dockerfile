@@ -339,8 +339,9 @@ RUN install-packages \
 # Install novnc and numpy module for it
 RUN git clone --depth 1 https://github.com/novnc/noVNC.git /opt/novnc \
 	&& git clone --depth 1 https://github.com/novnc/websockify /opt/novnc/utils/websockify \
-	&& find /opt/novnc -type d -name '.git' -exec rm -rf '{}' + \
-	&& sudo -H pip3 install numpy
+	&& find /opt/novnc -type d -name '.git' -exec rm -rf '{}' +
+    # removing temporarily due to https://groups.google.com/g/linux.debian.bugs.dist/c/L5yn5hwxVBU 
+	#&& sudo -H pip3 install numpy 
 COPY novnc-index.html /opt/novnc/index.html
 
 # Add VNC startup script
