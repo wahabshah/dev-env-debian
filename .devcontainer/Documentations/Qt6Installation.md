@@ -60,6 +60,10 @@ qml6-module-qttest
   (cd /home/gitpod/Qt/Tools/QtCreator && 7za x ../qtcreator.7z)
   ```
 * ![image](https://user-images.githubusercontent.com/123810119/218302800-e5873c63-5349-49b8-9461-dc35741947cd.png)
+* Openssl 1.1.1-4
+  ```sh
+  wget https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/tools_openssl_x64/qt.tools.openssl.gcc_64/1.1.1-4openssl-1.1.1d_prebuild_rhel7_6.7z
+  ```
 
 ```sh
 python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1
