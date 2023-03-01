@@ -31,7 +31,7 @@ RUN install-packages \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen
 
-#ENV LANG=en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 ### Update and upgrade the base image ###
 #RUN upgrade-packages
