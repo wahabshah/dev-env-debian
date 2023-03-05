@@ -423,3 +423,10 @@ RUN cd $HOME                                                             \
     && ./emsdk install 3.1.14                                            \
     && ./emsdk activate 3.1.14
     # echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
+
+RUN sudo sed -i '2i echo "\/etc\/environment"' /etc/environment    \
+ && sudo sed -i '2i echo "\/etc\/profile"'     /etc/profile        \
+ && sudo sed -i '2i echo "\/etc\/bash.bashrc"' /etc/bash.bashrc    \
+ && sudo sed -i '2i echo "~\/.bash_profile"'   $HOME/.bash_profile \
+ && sudo sed -i '2i echo "~\/.profile"'        $HOME/.profile      \
+ && sudo sed -i '2i echo "~\/.bashrc"'         $HOME/.bashrc
