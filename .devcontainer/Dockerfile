@@ -424,9 +424,10 @@ RUN cd $HOME                                                             \
     && ./emsdk activate 3.1.14
     # echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
 
-RUN sudo sed -i '2i echo "\/etc\/environment"' /etc/environment                             \
- && sudo sed -i '2i echo "\/etc\/profile"'     /etc/profile                                 \
- && sudo sed -i '2i echo "\/etc\/bash.bashrc"' /etc/bash.bashrc                             \
- && touch ~/.bash_profile && sudo sed -i '2i echo "~\/.bash_profile"'   $HOME/.bash_profile \
- && sudo sed -i '2i echo "~\/.profile"'        $HOME/.profile                               \
- && sudo sed -i '2i echo "~\/.bashrc"'         $HOME/.bashrc
+RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-1.txt && echo $PATH >> $DATE-1.txt'                             /etc/environment    \
+ && sudo sed -i '2i echo "\/etc\/profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-2.txt && echo $PATH >> $DATE-2.txt'                                 /etc/profile        \
+ && sudo sed -i '2i echo "\/etc\/bash.bashrc" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-3.txt && echo $PATH >> $DATE-3.txt'                             /etc/bash.bashrc    \
+ && touch /home/gitpod/.bash_profile && sudo sed -i '2i echo "~\/.bash_profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-4.txt && echo $PATH >> $DATE-4.txt'  /home/gitpod/.bash_profile \
+ && sudo sed -i '2i echo "~\/.profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-5.txt && echo $PATH >> $DATE-5.txt'                                    /home/gitpod/.profile     \
+ && sudo sed -i '2i echo "~\/.bashrc" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-6.txt && echo $PATH >> $DATE-6.txt'                                     /home/gitpod/.bashrc       \
+ && sudo sed -i '5,10d' /etc/profile
