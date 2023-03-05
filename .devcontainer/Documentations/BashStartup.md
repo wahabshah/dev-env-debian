@@ -21,6 +21,7 @@ gitpod / $ exec bash --login
 /etc/profile
 /etc/bash.bashrc
 ~/.bash_profile
+~/.profile
 ~/.bashrc
 ~/.bashrc.d/200-nix
 
