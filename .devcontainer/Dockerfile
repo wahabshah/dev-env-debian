@@ -1,5 +1,6 @@
 FROM buildpack-deps:${VARIANT:-bookworm}
 
+RUN df -h
 COPY install-packages upgrade-packages /usr/bin/
 
 ### base ###
