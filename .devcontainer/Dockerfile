@@ -286,30 +286,7 @@ COPY --chown=gitpod:gitpod python_hook.bash $HOME/.bashrc.d/60-python
 COPY --chown=gitpod:gitpod avoid_userbase_hook.bash $HOME/.pyenv/pyenv.d/exec
 
 
-################ lang-ruby:3.1 ###############
-ARG RUBY_VERSION=3.1.2
-
-USER gitpod
-
-# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-ENV TRIGGER_REBUILD=1
-
-RUN curl -fsSL https://rvm.io/mpapis.asc | gpg --import - \
-    && curl -fsSL https://rvm.io/pkuczynski.asc | gpg --import - \
-    && curl -fsSL https://get.rvm.io | bash -s stable \
-    && bash -lc " \
-        rvm requirements \
-        && rvm install ${RUBY_VERSION} \
-        && rvm use ${RUBY_VERSION} --default \
-        && rvm rubygems current \
-        && gem install bundler --no-document \
-        && gem install solargraph --no-document" \
-    && echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> /home/gitpod/.bashrc.d/70-ruby
-RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
-
-ENV GEM_HOME=/workspace/.rvm
-ENV GEM_PATH=$GEM_HOME:$GEM_PATH
-ENV PATH=/workspace/.rvm/bin:$PATH
+# lang-ruby:3.1
 
 #######lang-rust#####
 USER gitpod
@@ -329,110 +306,9 @@ RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-
     && cargo install cargo-watch cargo-edit cargo-workspaces \
     && rm -rf "$HOME/.cargo/registry" # This registry cache is now useless as we change the CARGO_HOME path to `/workspace`
     
-#######tool-brew#######
-USER gitpod
-
-# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-ENV TRIGGER_REBUILD=4
-
-RUN mkdir ~/.cache && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH
-ENV MANPATH="$MANPATH:/home/linuxbrew/.linuxbrew/share/man"
-ENV INFOPATH="$INFOPATH:/home/linuxbrew/.linuxbrew/share/info"
-ENV HOMEBREW_NO_AUTO_UPDATE=1
-
-RUN sudo apt remove -y cmake \
-    && brew install cmake
-
-
-#######tool-nginx#######
-USER root
-
-# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-ENV TRIGGER_REBUILD=2
-
-# Install composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-RUN for _ppa in 'ppa:ondrej/php' 'ppa:ondrej/apache2' 'ppa:ondrej/nginx-mainline'; do add-apt-repository -y "$_ppa"; done \
-    && install-packages \
-        apache2 \
-        nginx \
-        nginx-extras \
-        nginx-doc \
-        php \
-        php-all-dev \
-        php-bcmath \
-        php-common \
-        php-curl \
-        php-date \
-        php-fpm \
-        php-gd \
-        php-intl \
-        php-json \
-        php-mbstring \
-        php-mysql \
-        php-net-ftp \
-        php-pgsql \
-        php-pear \
-        php-sqlite3 \
-        php-tokenizer \
-        php-xml \
-        php-zip \
-    && mkdir -p /var/run/nginx \
-    && ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load \
-    && chown -R gitpod:gitpod /etc/apache2 /var/run/apache2 /var/lock/apache2 /var/log/apache2 \
-    && chown -R gitpod:gitpod /etc/nginx /var/run/nginx /var/lib/nginx/ /var/log/nginx/
-COPY --chown=gitpod:gitpod apache2/ /etc/apache2/
-COPY --chown=gitpod:gitpod nginx /etc/nginx/
-
-## The directory relative to your git repository that will be served by Apache / Nginx
-ENV APACHE_DOCROOT_IN_REPO="public"
-ENV NGINX_DOCROOT_IN_REPO="public"
-
-USER gitpod
-
-
-########tool-nix:2.11.0#######
-ARG NIX_VERSION=2.11.0
-ARG NIX_CONFIG="experimental-features = nix-command flakes"
-
-ENV NIX_VERSION=${NIX_VERSION}
-
-USER root
-
-# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-ENV TRIGGER_REBUILD=1
-
-RUN addgroup --system nixbld \
-  && adduser gitpod nixbld \
-  && for i in $(seq 1 30); do useradd -ms /bin/bash nixbld$i && adduser nixbld$i nixbld; done \
-  && mkdir -m 0755 /nix && chown gitpod /nix \
-  && mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf
-
-# Install Nix
-USER gitpod
-ENV USER gitpod
-WORKDIR /home/gitpod
-
-RUN curl https://nixos.org/releases/nix/nix-$NIX_VERSION/install | sh
-
-RUN echo '. /home/gitpod/.nix-profile/etc/profile.d/nix.sh' >> /home/gitpod/.bashrc.d/200-nix
-RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
-RUN mkdir -p /home/gitpod/.config/nix && echo $NIX_CONFIG >> /home/gitpod/.config/nix/nix.conf
-
-# Install cachix
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -iA cachix -f https://cachix.org/api/v1/install \
-  && cachix use cachix
-
-# Install direnv
-RUN mkdir -p /home/gitpod/.config/direnv \
-  && echo '[whitelist]' > .config/direnv/config.toml \
-  && echo 'prefix = [ "/workspace" ]' >> .config/direnv/config.toml \
-  && . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -i direnv \
-  && direnv hook bash >> /home/gitpod/.bashrc
+# tool-brew
+# tool-nginx
+# tool-nix:2.11.0
 
 
 #########TOOL-CHROME#####################
