@@ -432,3 +432,5 @@ RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S
  && sudo sed -i '2i echo "~\/.profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-5.txt && echo $PATH >> $DATE-5.txt'                                    /home/gitpod/.profile     \
  && sudo sed -i '2i echo "~\/.bashrc" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-6.txt && echo $PATH >> $DATE-6.txt'                                     /home/gitpod/.bashrc       \
  && sudo sed -i '5,10d' /etc/profile
+
+RUN df -h
