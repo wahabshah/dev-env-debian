@@ -23,6 +23,11 @@
 			]
 		}
 	},
+	"hostRequirements": {
+                        "cpus": 2,
+                        "memory": "8gb",
+                        "storage": "64gb"
+         },
 	"updateRemoteUserUID": false,
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
