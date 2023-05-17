@@ -72,8 +72,7 @@ RUN sudo echo "Running 'sudo' for Gitpod: success" && \
 # Custom PATH additions
 ENV PATH=$HOME/.local/bin:/usr/games:$PATH
 
-###########DEP-CACERT-UPDATE################ 
-
+###########1/22 dep-cacert-update###########
 USER gitpod
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -81,8 +80,7 @@ ENV TRIGGER_REBUILD=1
 
 RUN sudo apt-get install -y --only-upgrade ca-certificates
 
-##########TOOL-DOCKER#############
-
+###########2/22 tool-docker###########
 USER root
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -113,8 +111,7 @@ RUN curl -o /tmp/dive.deb -fsSL https://github.com/wagoodman/dive/releases/downl
 
 USER gitpod
 
-###############TOOL-TAILSCALE##########
-
+###########3/22 tool-tailscale###########
 USER root
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -133,7 +130,7 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/"$(lsb_release -cs)".gpg
 
 USER gitpod
 
-###############C/C++##########
+###########4/22 lang-c###########
 USER root
 
 
@@ -155,9 +152,11 @@ RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | sudo gpg --dearmor -
 
 USER gitpod
 
-###############CLOJURE##########
+###########5/22 lang-clojure###########
 
-##############go:1.19.5##########
+###########6/22 lang-elixir###########
+
+###########7/22 lang-go:1.19.5###########
 ARG GO_VERSION=1.19.5
 
 USER gitpod
@@ -184,9 +183,9 @@ RUN curl -fsSL https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz | tar x
     sudo rm -rf $GOPATH/src $GOPATH/pkg $HOME/.cache/go $HOME/.cache/go-build && \
     printf '%s\n' 'export GOPATH=/workspace/go' \
                   'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
-##########java:11##########
+###########8/22 lang-java:11###########
 
-###############Nodejs##########
+###########9/22 lang-node:16###########
 ARG NODE_VERSION=16.19.0
 
 USER gitpod
@@ -209,7 +208,7 @@ COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
 
 
 
-###############python:3.8################
+###########10/22 lang-python:3.8###########
 ARG PYTHON_VERSION=3.8.16
 
 USER gitpod
@@ -251,9 +250,9 @@ COPY --chown=gitpod:gitpod python_hook.bash $HOME/.bashrc.d/60-python
 COPY --chown=gitpod:gitpod avoid_userbase_hook.bash $HOME/.pyenv/pyenv.d/exec
 
 
-##### lang-ruby:3.1 #####
+###########11/22 lang-ruby:3.1###########
 
-#######lang-rust#####
+###########12/22 lang-rust###########
 USER gitpod
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -271,13 +270,13 @@ RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-
     && cargo install cargo-watch cargo-edit cargo-workspaces \
     && rm -rf "$HOME/.cargo/registry" # This registry cache is now useless as we change the CARGO_HOME path to `/workspace`
     
-###### tool-brew #####
-###### tool-nginx #####
-###### tool-nix:2.11.0 #####
+###########13/22 tool-brew###########
 
+###########14/22 tool-nginx###########
 
-#########TOOL-CHROME#####################
+###########15/22 tool-nix:2.11.0###########
 
+###########16/22 tool-chrome###########
 USER root
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -306,8 +305,7 @@ ENV QTWEBENGINE_DISABLE_SANDBOX 1
 
 USER gitpod
 
-########TOOL-VNC#########################
-
+###########17/22 tool-vnc###########
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
 ENV TRIGGER_REBUILD=1
 
@@ -336,7 +334,7 @@ RUN chmod 0755 "$(which gp-vncsession)" \
 USER gitpod
 
 
-#######TOOL-DOTNET#########
+###########18/22 tool-dotnet###########
 USER gitpod
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
 ENV TRIGGER_REBUILD=1
@@ -358,8 +356,16 @@ RUN bash \
         echo 'fi'; } >> /home/gitpod/.bashrc.d/110-dotnet
 RUN chmod +x /home/gitpod/.bashrc.d/110-dotnet
 
-#######EssentialTools-Boost1.81-Qt6-EMSDK##########
+###########19/22 tool-postgresql###########
 
+###########20/22 tool-mysql###########
+
+###########21/22 tool-mongodb###########
+
+###########22/22 tool-yugabytedb:2.14###########
+
+
+###########EssentialTools-Boost1.81-Qt6-EMSDK###########
 USER gitpod
 
 RUN sudo install-packages                                                                                             \
