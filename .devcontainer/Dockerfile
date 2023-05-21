@@ -376,7 +376,7 @@ RUN sudo install-packages                                                       
     cmake ninja-build pkg-config liburing-dev gdb tree p7zip-full
 RUN sudo install-packages libboost1.81-dev
 RUN cd $HOME                                                                                                                                                              \
-    && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \                                                       \
+    && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \
     && python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/Qt                                                                \
     && python3 -m aqt install-tool    linux desktop tools_openssl_x64 --outputdir $PWD/Qt                                                                                 \
     && python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt                                                                                                     \
