@@ -375,6 +375,13 @@ RUN sudo install-packages                                                       
     libxcb-render-util0-dev libxcb-util-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
     cmake ninja-build pkg-config liburing-dev gdb tree p7zip-full
 RUN sudo install-packages libboost1.81-dev
+
+RUN sudo du -sh /var/cache/apt/archives/    \
+    && sudo apt-get clean --dry-run         \
+    && sudo apt-get clean                   \
+    && sudo du -sh /var/cache/apt/archives/ \
+    && sudo df -h
+
 RUN cd $HOME                                                                                                                                                              \
     && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \
     && python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/Qt                                                                \
