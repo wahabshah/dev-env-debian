@@ -209,46 +209,6 @@ COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
 
 
 ###########10/22 lang-python:3.8###########
-ARG PYTHON_VERSION=3.8.16
-
-USER gitpod
-# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-ENV TRIGGER_REBUILD=1
-
-ENV PATH=$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH
-ENV PIPENV_VENV_IN_PROJECT=true
-ENV PYENV_ROOT="$HOME/.pyenv"
-
-RUN sudo install-packages \
-	# Install python compiling dependencies for pyenv
-	python3-pip make build-essential libssl-dev zlib1g-dev \
-	libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-	libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-	# Install PYENV
-	&& git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
-	&& git -C ~/.pyenv checkout ff93c58babd813066bf2d64d004a5cee33c0f27b \
-	&& pyenv install ${PYTHON_VERSION} \
-	&& pyenv global ${PYTHON_VERSION} \
-	&& for exec in global; do printf '%s\n' 'source "$HOME/.gp_pyenv.d/userbase.bash"' >> "$PYENV_ROOT/libexec/pyenv-$exec"; done \
-	# Install additional python packages
-	&& python3 -m pip install --no-cache-dir --upgrade pip \
-	&& pip install --no-cache-dir --upgrade \
-	setuptools wheel virtualenv pipenv pylint rope flake8 \
-	mypy autopep8 pep8 pylama pydocstyle bandit notebook \
-	twine
-# Install poetry
-RUN if echo $PYTHON_VERSION | grep -q "3.6.*"; then \
-		curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.1.15 python; \
-    else \
-		curl -sSL https://install.python-poetry.org | python; \
-	fi
-RUN sudo rm -rf /tmp/*
-
-COPY --chown=gitpod:gitpod pyenv.d $HOME/.gp_pyenv.d
-COPY --chown=gitpod:gitpod userbase.bash $HOME/.gp_pyenv.d
-COPY --chown=gitpod:gitpod python_hook.bash $HOME/.bashrc.d/60-python
-COPY --chown=gitpod:gitpod avoid_userbase_hook.bash $HOME/.pyenv/pyenv.d/exec
-
 
 ###########11/22 lang-ruby:3.1###########
 
@@ -376,12 +336,6 @@ RUN sudo install-packages                                                       
     cmake ninja-build pkg-config liburing-dev gdb tree p7zip-full
 RUN sudo install-packages libboost1.81-dev
 
-RUN sudo du -sh /var/cache/apt/archives/    \
-    && sudo apt-get clean --dry-run         \
-    && sudo apt-get clean                   \
-    && sudo du -sh /var/cache/apt/archives/ \
-    && sudo df -h
-
 RUN cd $HOME                                                                                                                                                              \
     && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \
     && python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/Qt                                                                \
@@ -398,8 +352,8 @@ RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
     && ./emsdk install 3.1.14                                            \
-    && ./emsdk activate 3.1.14
-    # echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
+    && ./emsdk activate 3.1.14                                           \
+    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
 
 RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-1.txt && echo $PATH >> $DATE-1.txt'                             /etc/environment    \
  && sudo sed -i '2i echo "\/etc\/profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-2.txt && echo $PATH >> $DATE-2.txt'                                 /etc/profile        \
