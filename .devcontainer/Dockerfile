@@ -337,6 +337,8 @@ RUN sudo install-packages                                                       
 RUN sudo install-packages libboost1.81-dev
 
 RUN cd $HOME                                                                                                                                                              \
+    && python3 -m venv .venv/some-python-module-or-app                                                                                                                    \
+    && source .venv/some-python-module-or-app/bin/activate                                                                                                                \
     && python3 -m pip install setuptools wheel py7zr>=0.20.2 aqtinstall==3.1.1                                                                                            \
     && python3 -m aqt install-tool    linux desktop tools_qtcreator qt.tools.qtcreator --outputdir $PWD/Qt                                                                \
     && python3 -m aqt install-tool    linux desktop tools_openssl_x64 --outputdir $PWD/Qt                                                                                 \
