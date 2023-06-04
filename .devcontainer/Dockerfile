@@ -345,17 +345,16 @@ RUN cd $HOME                                                                    
     && python3 -m aqt install-doc     linux 6.4.2 --outputdir $PWD/Qt                                                                                                     \
     && python3 -m aqt install-example linux 6.4.2 --outputdir $PWD/Qt                                                                                                     \
     && python3 -m aqt install-qt      linux desktop 6.4.2 gcc_64  -m qtvirtualkeyboard qtquicktimeline --outputdir $PWD/Qt                                                \
-    && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard qtquicktimeline --outputdir $PWD/Qt                                                
-    #\
-    #&& sed -i 's/Exec=qtcreator/Exec=\/home\/gitpod\/Qt\/Tools\/QtCreator\/bin\/qtcreator/g' $HOME/Qt/Tools/QtCreator/share/applications/org.qt-project.qtcreator.desktop \
-    #&& cp -r $PWD/Qt/Tools/QtCreator/share/* $HOME/.local/share/
+    && python3 -m aqt install-qt      linux desktop 6.4.2 wasm_32 -m qtvirtualkeyboard qtquicktimeline --outputdir $PWD/Qt                                                \
+    && sed -i 's/Exec=qtcreator/Exec=\/home\/gitpod\/Qt\/Tools\/QtCreator\/bin\/qtcreator/g' $HOME/Qt/Tools/QtCreator/share/applications/org.qt-project.qtcreator.desktop \
+    && cp -r $PWD/Qt/Tools/QtCreator/share/* $HOME/.local/share/
 COPY --chown=gitpod:gitpod Qt_DotConfig $HOME/.config/
 RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
     && ./emsdk install 3.1.14                                            \
-    && ./emsdk activate 3.1.14                                           \
-    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
+    && ./emsdk activate 3.1.14                                           
+    # \ && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
 
 RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-1.txt && echo $PATH >> $DATE-1.txt'                             /etc/environment    \
  && sudo sed -i '2i echo "\/etc\/profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-2.txt && echo $PATH >> $DATE-2.txt'                                 /etc/profile        \
