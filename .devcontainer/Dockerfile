@@ -301,7 +301,7 @@ ENV TRIGGER_REBUILD=1
 
 # Install .NET SDK (Current channel)
 # Source: https://docs.microsoft.com/dotnet/core/install/linux-scripted-manual#scripted-install
-RUN mkdir -p /home/gitpod/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 7.0.100 --install-dir /home/gitpod/dotnet
+RUN mkdir -p /home/gitpod/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 8.0.100-preview.4.23260.5 --install-dir /home/gitpod/dotnet
 ENV DOTNET_ROOT=/home/gitpod/dotnet
 ENV PATH=/home/gitpod/dotnet:$PATH
 
@@ -353,8 +353,8 @@ RUN cd $HOME                                                             \
     && git clone https://github.com/emscripten-core/emsdk.git            \
     && cd emsdk                                                          \
     && ./emsdk install 3.1.14                                            \
-    && ./emsdk activate 3.1.14                                           
-    # \ && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
+    && ./emsdk activate 3.1.14                                           \
+    && echo 'source "$HOME/emsdk/emsdk_env.sh"' >> $HOME/.bashrc
 
 RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-1.txt && echo $PATH >> $DATE-1.txt'                             /etc/environment    \
  && sudo sed -i '2i echo "\/etc\/profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-2.txt && echo $PATH >> $DATE-2.txt'                                 /etc/profile        \
@@ -363,5 +363,3 @@ RUN sudo sed -i '2i echo "\/etc\/environment" && DATE=$(date +"%d-%m-%Y-%H-%M-%S
  && sudo sed -i '2i echo "~\/.profile" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-5.txt && echo $PATH >> $DATE-5.txt'                                    /home/gitpod/.profile     \
  && sudo sed -i '2i echo "~\/.bashrc" && DATE=$(date +"%d-%m-%Y-%H-%M-%S-%N") && touch \/home\/gitpod\/$DATE-6.txt && echo $PATH >> $DATE-6.txt'                                     /home/gitpod/.bashrc       \
  && sudo sed -i '5,10d' /etc/profile
-
-RUN df -h
