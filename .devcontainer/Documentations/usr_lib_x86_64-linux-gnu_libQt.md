@@ -1,3 +1,4 @@
+```sh
 ls -alh /usr/lib/x86_64-linux-gnu/libQt*
 
 -rw-r--r-- 1 root root  203 Jan 31 18:16 /usr/lib/x86_64-linux-gnu/libQt6Concurrent.prl
@@ -216,3 +217,4 @@ lrwxrwxrwx 1 root root   21 Jan 31 18:16 /usr/lib/x86_64-linux-gnu/libQt6XcbQpa.
 lrwxrwxrwx 1 root root   14 Jan 31 18:16 /usr/lib/x86_64-linux-gnu/libQt6Xml.so -> libQt6Xml.so.6
 lrwxrwxrwx 1 root root   18 Jan 31 18:16 /usr/lib/x86_64-linux-gnu/libQt6Xml.so.6 -> libQt6Xml.so.6.4.2
 -rw-r--r-- 1 root root 143K Jan 31 18:16 /usr/lib/x86_64-linux-gnu/libQt6Xml.so.6.4.2
+```
