@@ -29,7 +29,7 @@
 
   ## Using Qt Quick Text QML Type
 * https://doc.qt.io/qt-6/qml-qtquick-text.html
-* [qml/QtQuick/plugins.qmltypes](./usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
+* [qml/QtQuick/plugins.qmltypes](../usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
 * Qt5
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickimplicitsizeitem_p.h.html#QQuickImplicitSizeItem
