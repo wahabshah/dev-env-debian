@@ -30,7 +30,12 @@
   ## Using Qt Quick Text QML Type
 * https://doc.qt.io/qt-6/qml-qtquick-text.html
 * [qml/QtQuick/plugins.qmltypes](../usr_lib_x86_64-linux-gnu_qt6_qml/QtQuick/plugins.qmltypes) => (file: "private/qquicktext_p.h" name: "QQuickText")
+  * ![image](https://github.com/wahabshah/dev-env-debian/assets/8818025/dcd3afb8-a8cc-4bd2-9fb7-34ce3c27f38d)
 * Qt5
+  * path
+    ```sh
+    /opt/Qt5.10.1/5.10.1/gcc_64/include/QtQuick/5.10.1/QtQuick/private/qquicktext_p.h
+    ```
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktext_p.h.html (QQuickText)
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquickimplicitsizeitem_p.h.html#QQuickImplicitSizeItem
   * https://codebrowser.dev/qt5/qtdeclarative/src/quick/items/qquicktextinterface_p.h
