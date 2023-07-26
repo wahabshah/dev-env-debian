@@ -25,6 +25,10 @@
         * size
       * Submodules 
         * **Qt QML Core**
+          * Qt QML Core QML Types
+            * Settings : Provides persistent platform-independent application settings
+            * StandardPaths** : Provides access to the standard system paths
+            * SystemInformation : Provides information about the system
         * **Qt QML Models** : This QML module contains types for defining data models in QML.
           * Qt QML Models QML Types 
             * DelegateModel : Encapsulates a model and delegate
@@ -39,7 +43,9 @@
             * DelegateChooser : Allows a view to use different delegates for different types of items in the model
             * TableModel : Encapsulates a simple table model
             * TableModelColumn : Represents a column in a model
-        * **Qt QML WorkerScript**
+        * **Qt QML WorkerScript** : This QML module contains types for using worker scripts.
+          * Qt QML WorkerScript QML Type
+            * WorkerScript : Enables the use of threads in a Qt Quick application
         * **Qt QML XmlListModel**
     * **Qt Quick**	: A declarative framework for building highly dynamic applications with custom user interfaces.
       * Qt Quick QML Value Types
@@ -205,12 +211,12 @@
     * **Active Qt**	:  Classes for applications which use ActiveX and COM 
     * **Qt 3D**	: Functionality for near-realtime simulation systems with support for 2D and 3D rendering.
     * **Qt 5 Core Compatibility APIs** : Qt Core APIs that were in Qt 5 but not Qt 6.
-    * Qt Bluetooth	All	Android, iOS, Linux, Boot to Qt, macOS and Windows	Provides access to Bluetooth hardware.
-    * Qt Concurrent	All	All	Classes for writing multi-threaded programs without using low-level threading primitives.
-    * Qt Help	All	All	Classes for integrating documentation into applications.
-    * Qt Image Formats	All	All	Plugins for additional image formats: TIFF, MNG, TGA, WBMP.
-    * Qt Multimedia	All	All*	A rich set of QML types and C++ classes to handle multimedia content. Also includes APIs to handle camera access.
-    * Qt NFC	All	Android, iOS, macOS, Linux and Windows	Provides access to Near-Field communication (NFC) hardware. On desktop platforms NDEF access is only     * supported for Type 4 tags.
+    * **Qt Bluetooth** :	Provides access to Bluetooth hardware.
+    * **Qt Concurrent** :	Classes for writing multi-threaded programs without using low-level threading primitives.
+    * **Qt Help** : Classes for integrating documentation into applications.
+    * **Qt Image Formats**	: Plugins for additional image formats: TIFF, MNG, TGA, WBMP.
+    * **Qt Multimedia** :	A rich set of QML types and C++ classes to handle multimedia content. Also includes APIs to handle camera access.
+    * **Qt NFC** : Provides access to Near-Field communication (NFC) hardware. On desktop platforms NDEF access is only     * supported for Type 4 tags.
     * Qt OPC UA	All	All (except QNX, WebAssembly)	Protocol for data modeling and exchange of data in industrial applications.
     * Qt OpenGL	All	All	C++ classes that make it easy to use OpenGL in Qt applications. A separate library of Qt OpenGL Widgets C++ Classes provides a widget for     * rendering OpenGL graphics.
     * Qt PDF	All	Windows, Linux, and macOS.	Classes and functions for rendering PDF documents.
@@ -243,7 +249,7 @@
     * Qt Quick Timeline	All	All	Enables keyframe-based animations and parameterization.
     * Qt Shader Tools	All	All	Provides tools for the cross-platform Qt shader pipeline. These enable processing graphics and compute shaders to make them usable for     * Qt Quick and other components in the Qt ecosystem.
     * **Qt Virtual Keyboard**	A framework for implementing different input methods as well as a QML virtual     * keyboard. Supports localized keyboard layouts and custom visual themes.
-    * Qt Wayland Compositor	Linux	Linux and Boot to Qt targets.	Provides a framework to develop a Wayland compositor.
+    * **Qt Wayland Compositor**	: Provides a framework to develop a Wayland compositor.
 * https://www.qt.io/hubfs/_website/QML%20Book/qt6book-with-frontpage.pdf
 * https://doc.qt.io/qt-6/qtqml-typesystem-topic.html
   * `QML Value Types`: https://doc.qt.io/qt-6/qtqml-typesystem-valuetypes.html
