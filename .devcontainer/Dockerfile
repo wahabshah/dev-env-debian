@@ -156,8 +156,8 @@ USER gitpod
 
 ###########6/22 lang-elixir###########
 
-###########7/22 lang-go:1.19.5###########
-ARG GO_VERSION=1.19.5
+###########7/22 lang-go:1.21.3###########
+ARG GO_VERSION=1.21.3
 
 USER gitpod
 
@@ -180,6 +180,7 @@ RUN curl -fsSL https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz | tar x
     go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest && \
     go install -v golang.org/x/tools/gopls@latest && \
     go install -v honnef.co/go/tools/cmd/staticcheck@latest && \
+    go clean -cache -modcache && \
     sudo rm -rf $GOPATH/src $GOPATH/pkg $HOME/.cache/go $HOME/.cache/go-build && \
     printf '%s\n' 'export GOPATH=/workspace/go' \
                   'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
