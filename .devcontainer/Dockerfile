@@ -246,7 +246,7 @@ ENV TRIGGER_REBUILD=1
 # chrome and basic render font
 # google-chrome
 # misc deps for electron and puppeteer to run
-RUN cd /tmp && glink="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" \
+RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian/20230804T205645Z/pool/main/c/chromium/chromium_115.0.5790.170-1_amd64.deb" \
 	&& wget -q "$glink" \
 	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
 	fonts-noto fonts-noto-cjk ./"${glink##*/}" \
