@@ -237,7 +237,7 @@ RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-
 
 ###########15/22 tool-nix:2.11.0###########
 
-###########16/22 tool-chrome###########
+###########16/22 tool-chrome:115.0.5790.170-1###########
 USER root
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -246,6 +246,7 @@ ENV TRIGGER_REBUILD=1
 # chrome and basic render font
 # google-chrome
 # misc deps for electron and puppeteer to run
+# https://snapshot.debian.org/package/chromium/
 RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian/20230804T205645Z/pool/main/c/chromium/chromium_115.0.5790.170-1_amd64.deb" \
 	&& wget -q "$glink" \
 	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
@@ -295,14 +296,15 @@ RUN chmod 0755 "$(which gp-vncsession)" \
 USER gitpod
 
 
-###########18/22 tool-dotnet###########
+###########18/22 tool-dotnet:8.0.100###########
 USER gitpod
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
 ENV TRIGGER_REBUILD=1
 
 # Install .NET SDK (Current channel)
 # Source: https://docs.microsoft.com/dotnet/core/install/linux-scripted-manual#scripted-install
-RUN mkdir -p /home/gitpod/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 8.0.100-preview.4.23260.5 --install-dir /home/gitpod/dotnet
+# https://versionsof.net/core/8.0/
+RUN mkdir -p /home/gitpod/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 8.0.100 --install-dir /home/gitpod/dotnet
 ENV DOTNET_ROOT=/home/gitpod/dotnet
 ENV PATH=/home/gitpod/dotnet:$PATH
 
