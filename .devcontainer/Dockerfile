@@ -139,8 +139,8 @@ ENV TRIGGER_REBUILD=1
 
 # when bookworm is released then change to http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15
 RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/llvm-archive-keyring.gpg \
-    && echo "deb [signed-by=/usr/share/keyrings/llvm-archive-keyring.gpg] http://apt.llvm.org/unstable/ \
-    llvm-toolchain-15 main" | sudo tee /etc/apt/sources.list.d/llvm.list > /dev/null \
+    && echo "deb [signed-by=/usr/share/keyrings/llvm-archive-keyring.gpg] http://apt.llvm.org/bookworm/ \
+    llvm-toolchain-$(lsb_release -cs)-15 main" | sudo tee /etc/apt/sources.list.d/llvm.list > /dev/null \
     && apt update \
     && sudo install-packages \
         clang \
@@ -237,31 +237,30 @@ RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-
 
 ###########15/22 tool-nix:2.11.0###########
 
-###########16/22 tool-chrome:115.0.5790.170-1###########
-# USER root
+###########16/22 tool-chrome:120.0.6099.129###########
+USER root
 
-# # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
-# ENV TRIGGER_REBUILD=1
+# Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
+ENV TRIGGER_REBUILD=1
 
-# # chrome and basic render font
-# # google-chrome
-# # misc deps for electron and puppeteer to run
-# # https://snapshot.debian.org/package/chromium/
-# RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian/20230114T091657Z/pool/main/c/chromium/chromium_109.0.5414.74-2_amd64.deb" \
-
-# 	&& wget -q "$glink" \
-# 	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
-# 	fonts-noto fonts-noto-cjk ./"${glink##*/}" \
-# 	\
-# 	# OLD: && ln -srf /usr/bin/chromium /usr/bin/google-chrome
-# 	# OLD: To make ungoogled_chromium discoverable by tools like flutter
-# 	&& ln -srf /usr/bin/google-chrome /usr/bin/chromium \
-# 	\
-# 	# Extra chrome tweaks
-# 	## Disables welcome screen
-# 	&& t="$HOME/.config/google-chrome/First Run" && sudo -u gitpod mkdir -p "${t%/*}" && sudo -u gitpod touch "$t" \
-# 	## Disables default browser prompt
-# 	&& t="/etc/opt/chrome/policies/managed/managed_policies.json" && mkdir -p "${t%/*}" && printf '{ "%s": %s }\n' DefaultBrowserSettingEnabled false > "$t"
+# chrome and basic render font
+# google-chrome
+# misc deps for electron and puppeteer to run
+# https://snapshot.debian.org/package/chromium/
+RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian/20231222T090752Z/pool/main/c/chromium/chromium_120.0.6099.129-1_amd64.deb" \
+	&& wget -q "$glink" \
+	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
+	fonts-noto fonts-noto-cjk ./"${glink##*/}" \
+	\
+	# OLD: && ln -srf /usr/bin/chromium /usr/bin/google-chrome
+	# OLD: To make ungoogled_chromium discoverable by tools like flutter
+	&& ln -srf /usr/bin/google-chrome /usr/bin/chromium \
+	\
+	# Extra chrome tweaks
+	## Disables welcome screen
+	&& t="$HOME/.config/google-chrome/First Run" && sudo -u gitpod mkdir -p "${t%/*}" && sudo -u gitpod touch "$t" \
+	## Disables default browser prompt
+	&& t="/etc/opt/chrome/policies/managed/managed_policies.json" && mkdir -p "${t%/*}" && printf '{ "%s": %s }\n' DefaultBrowserSettingEnabled false > "$t"
 
 # For Qt WebEngine on docker
 ENV QTWEBENGINE_DISABLE_SANDBOX 1
