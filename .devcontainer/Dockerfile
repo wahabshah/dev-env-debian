@@ -247,7 +247,8 @@ ENV TRIGGER_REBUILD=1
 # google-chrome
 # misc deps for electron and puppeteer to run
 # https://snapshot.debian.org/package/chromium/
-RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian/20240226T213049Z/pool/main/c/chromium/chromium_122.0.6261.57-1~deb12u1_amd64.deb" \
+# https://packages.debian.org/bookworm/chromium
+RUN cd /tmp && glink="https://snapshot.debian.org/archive/debian-security/20240718T055647Z/pool/updates/main/c/chromium/chromium_126.0.6478.182-1~deb12u1_amd64.deb" \
 	&& wget -q "$glink" \
 	&& install-packages libasound2-dev libgtk-3-dev libnss3-dev \
 	fonts-noto fonts-noto-cjk ./"${glink##*/}" \
