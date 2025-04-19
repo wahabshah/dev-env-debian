@@ -214,6 +214,8 @@ COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
 ###########11/22 lang-ruby:3.1###########
 
 ###########12/22 lang-rust###########
+ARG RUST_VERSION=1.66.0
+
 USER gitpod
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
@@ -221,7 +223,7 @@ ENV TRIGGER_REBUILD=4
 
 ENV PATH=$HOME/.cargo/bin:$PATH
 
-RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-path --default-toolchain stable \
+RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-path --default-toolchain ${RUST_VERSION}  \
         -c rls rust-analysis rust-src rustfmt clippy \
     && for cmp in rustup cargo; do rustup completions bash "$cmp" > "$HOME/.local/share/bash-completion/completions/$cmp"; done \
     && printf '%s\n'    'export CARGO_HOME=/workspace/.cargo' \
