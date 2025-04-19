@@ -214,12 +214,13 @@ COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
 ###########11/22 lang-ruby:3.1###########
 
 ###########12/22 lang-rust###########
-ARG RUST_VERSION=1.66.0
+ARG RUST_VERSION=1.72.0
 
 USER gitpod
 
 # Dazzle does not rebuild a layer until one of its lines are changed. Increase this counter to rebuild this layer.
 ENV TRIGGER_REBUILD=4
+ENV RUST_VERSION=${RUST_VERSION}
 
 ENV PATH=$HOME/.cargo/bin:$PATH
 
