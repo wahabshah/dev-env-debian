@@ -214,7 +214,7 @@ COPY --chown=gitpod:gitpod nvm-lazy.sh /home/gitpod/.nvm/nvm-lazy.sh
 ###########11/22 lang-ruby:3.1###########
 
 ###########12/22 lang-rust###########
-ARG RUST_VERSION=1.72.0
+ARG RUST_VERSION=1.86.0
 
 USER gitpod
 
